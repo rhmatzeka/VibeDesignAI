@@ -48,9 +48,9 @@ pre {
 
 .hero-section {
   background:
-    radial-gradient(ellipse 64rem 34rem at 50% 34%, rgba(0, 212, 164, 0.18), transparent 76%),
-    radial-gradient(ellipse 58rem 34rem at 64% 38%, rgba(14, 165, 233, 0.16), transparent 78%),
-    linear-gradient(180deg, #020917 0%, #031527 18%, #063646 42%, #064c4a 62%, #06362f 80%, #041514 94%, #050806 100%);
+    radial-gradient(ellipse 54rem 24rem at 50% 72%, rgba(0, 212, 164, 0.16), transparent 78%),
+    radial-gradient(ellipse 46rem 22rem at 66% 76%, rgba(14, 165, 233, 0.12), transparent 80%),
+    linear-gradient(180deg, #020917 0%, #031527 24%, #043244 50%, #063f42 66%, #052b27 82%, #041514 94%, #050806 100%);
 }
 
 .studio-scroll {
@@ -116,10 +116,10 @@ pre {
   pointer-events: none;
   overflow: hidden;
   background:
-    radial-gradient(ellipse 48rem 34rem at 50% 42%, rgba(0, 212, 164, 0.2), rgba(0, 125, 111, 0.11) 46%, transparent 78%),
-    radial-gradient(ellipse 52rem 32rem at 63% 44%, rgba(14, 165, 233, 0.2), transparent 80%),
-    radial-gradient(ellipse 44rem 28rem at 28% 46%, rgba(22, 78, 99, 0.34), transparent 80%),
-    linear-gradient(180deg, transparent 0%, rgba(5, 47, 54, 0.5) 44%, rgba(6, 76, 74, 0.42) 64%, rgba(4, 21, 20, 0.34) 88%, #050806 100%);
+    radial-gradient(ellipse 46rem 26rem at 50% 66%, rgba(0, 212, 164, 0.18), rgba(0, 125, 111, 0.09) 48%, transparent 80%),
+    radial-gradient(ellipse 48rem 24rem at 63% 68%, rgba(14, 165, 233, 0.14), transparent 82%),
+    radial-gradient(ellipse 38rem 22rem at 28% 70%, rgba(22, 78, 99, 0.26), transparent 82%),
+    linear-gradient(180deg, transparent 0%, rgba(4, 50, 68, 0.28) 44%, rgba(6, 63, 66, 0.38) 68%, rgba(5, 43, 39, 0.34) 84%, #050806 100%);
   opacity: 1;
 }
 
@@ -133,22 +133,22 @@ pre {
 
 .hero-pixel-field::before {
   background:
-    radial-gradient(ellipse 14rem 34rem at 50% 58%, rgba(0, 255, 181, 0.24), transparent 70%),
-    radial-gradient(ellipse 12rem 32rem at 58% 60%, rgba(30, 214, 158, 0.2), transparent 72%),
-    radial-gradient(ellipse 11rem 28rem at 44% 63%, rgba(64, 255, 205, 0.16), transparent 70%);
+    radial-gradient(ellipse 13rem 28rem at 50% 74%, rgba(0, 255, 181, 0.2), transparent 72%),
+    radial-gradient(ellipse 11rem 26rem at 58% 76%, rgba(30, 214, 158, 0.16), transparent 74%),
+    radial-gradient(ellipse 10rem 24rem at 44% 78%, rgba(64, 255, 205, 0.13), transparent 72%);
   filter: blur(14px);
   opacity: 0.78;
   transform: rotate(-10deg) scaleY(1.08);
-  transform-origin: 50% 62%;
+  transform-origin: 50% 78%;
   mask-image: linear-gradient(180deg, transparent 0%, black 32%, black 100%);
 }
 
 .hero-pixel-field::after {
   background:
-    radial-gradient(ellipse 38rem 18rem at 4% 62%, rgba(26, 92, 126, 0.48), transparent 78%),
-    radial-gradient(ellipse 44rem 20rem at 96% 66%, rgba(0, 151, 143, 0.26), transparent 80%),
-    linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(2, 8, 11, 0.06) 66%, rgba(2, 8, 11, 0.24) 90%, #050806 100%);
-  opacity: 0.78;
+    radial-gradient(ellipse 34rem 16rem at 4% 82%, rgba(26, 92, 126, 0.36), transparent 80%),
+    radial-gradient(ellipse 40rem 18rem at 96% 84%, rgba(0, 151, 143, 0.2), transparent 82%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(2, 8, 11, 0.04) 72%, rgba(2, 8, 11, 0.2) 92%, #050806 100%);
+  opacity: 0.72;
 }
 
 .aurora-ribbon {
