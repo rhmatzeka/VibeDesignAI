@@ -5,11 +5,8 @@ import {
   Braces,
   Check,
   Code2,
-  Download,
-  FileText,
   Gauge,
   Image,
-  Layers3,
   Monitor,
   Palette,
   Search,
@@ -21,6 +18,7 @@ import {
   Workflow,
   Zap
 } from "lucide-react";
+import PixelBlast from "./PixelBlast";
 
 const quickLinks = ["Resources", "Documentation", "Customers", "Blog", "Pricing"];
 
@@ -74,6 +72,27 @@ export function LandingPage() {
     <main className="min-h-screen bg-[#050806] text-white">
       <section className="relative overflow-hidden border-b border-white/8 bg-[#050806]">
         <div className="hero-starfield" />
+        <div className="absolute inset-0 z-0 opacity-70">
+          <PixelBlast
+            variant="circle"
+            pixelSize={5}
+            color="#00d4a4"
+            patternScale={3}
+            patternDensity={1.08}
+            pixelSizeJitter={0.45}
+            enableRipples
+            rippleSpeed={0.36}
+            rippleThickness={0.12}
+            rippleIntensityScale={1.35}
+            liquid
+            liquidStrength={0.08}
+            liquidRadius={1.1}
+            liquidWobbleSpeed={4.8}
+            speed={0.42}
+            edgeFade={0.42}
+            transparent
+          />
+        </div>
         <div className="aurora-ribbon aurora-ribbon-one" />
         <div className="aurora-ribbon aurora-ribbon-two" />
 
