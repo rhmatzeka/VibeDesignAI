@@ -76,31 +76,40 @@ pre {
   box-shadow: 0 0 0 3px rgba(34, 211, 238, 0.25), 0 0 0 1px rgba(34, 211, 238, 0.8);
 }
 
-.landing-cloud {
+.hero-starfield {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(circle at 15% 18%, rgba(0, 212, 164, 0.95) 0 1px, transparent 1.6px),
+    radial-gradient(circle at 70% 24%, rgba(125, 235, 203, 0.65) 0 1px, transparent 1.8px),
+    radial-gradient(circle at 42% 12%, rgba(255, 255, 255, 0.45) 0 1px, transparent 1.6px),
+    radial-gradient(circle at 88% 40%, rgba(0, 212, 164, 0.42) 0 1px, transparent 1.8px);
+  background-size: 120px 120px, 180px 180px, 150px 150px, 220px 220px;
+  opacity: 0.65;
+  mask-image: linear-gradient(180deg, black 0%, black 45%, transparent 88%);
+}
+
+.aurora-ribbon {
   position: absolute;
   pointer-events: none;
-  border-radius: 9999px;
-  background: rgba(255, 255, 255, 0.38);
-  filter: blur(18px);
+  filter: blur(34px);
+  opacity: 0.72;
+  transform: rotate(-12deg);
 }
 
-.landing-cloud-one {
-  left: -6rem;
-  top: 7rem;
-  width: 28rem;
-  height: 10rem;
-}
-
-.landing-cloud-two {
-  right: -8rem;
-  top: 14rem;
+.aurora-ribbon-one {
+  left: 9%;
+  top: 9rem;
   width: 34rem;
-  height: 12rem;
+  height: 18rem;
+  background: radial-gradient(ellipse at center, rgba(0, 212, 164, 0.5), rgba(0, 212, 164, 0.08) 45%, transparent 72%);
 }
 
-.landing-cloud-three {
-  bottom: 12rem;
-  left: 22%;
-  width: 24rem;
-  height: 8rem;
+.aurora-ribbon-two {
+  right: 12%;
+  top: 17rem;
+  width: 38rem;
+  height: 19rem;
+  background: radial-gradient(ellipse at center, rgba(14, 165, 233, 0.45), rgba(0, 212, 164, 0.18) 42%, transparent 72%);
 }

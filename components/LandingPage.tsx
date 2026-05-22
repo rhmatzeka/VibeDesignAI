@@ -1,263 +1,337 @@
 import Link from "next/link";
 import {
   ArrowRight,
+  Bot,
+  Braces,
   Check,
-  ClipboardCheck,
   Code2,
   Download,
   FileText,
+  Gauge,
   Image,
   Layers3,
+  Monitor,
   Palette,
+  Search,
+  ShieldCheck,
+  SlidersHorizontal,
   Sparkles,
-  Wand2
+  Upload,
+  Wand2,
+  Workflow,
+  Zap
 } from "lucide-react";
 
-const features = [
+const quickLinks = ["Resources", "Documentation", "Customers", "Blog", "Pricing"];
+
+const featureCards = [
   {
-    icon: Palette,
-    title: "Palette generator",
-    copy: "Create full color systems from a vibe, base color, or brand image."
+    icon: Bot,
+    label: "LLMS.TXT & MCP",
+    title: "Built for people and AI",
+    copy: "Generate design instructions that humans can read and AI coding agents can follow without guessing."
   },
   {
-    icon: Layers3,
-    title: "Live UI preview",
-    copy: "Preview landing, dashboard, login, pricing, product, and mobile layouts."
+    icon: Workflow,
+    label: "AGENT",
+    title: "Self-updating design context",
+    copy: "Changing the vibe, palette, website type, or prompt mode updates the generated system instantly."
   },
   {
-    icon: FileText,
-    title: "DESIGN.md output",
-    copy: "Generate structured design direction that AI coding agents can follow."
-  },
-  {
-    icon: Code2,
-    title: "CSS and Tailwind export",
-    copy: "Copy CSS variables, Tailwind tokens, JSON, and reusable agent prompts."
-  },
-  {
-    icon: Image,
-    title: "Image color extraction",
-    copy: "Upload a logo, screenshot, product photo, or moodboard and extract colors."
-  },
-  {
-    icon: ClipboardCheck,
-    title: "Contrast checker",
-    copy: "Check readable color pairs and auto-fix text contrast for safer UI."
+    icon: Monitor,
+    label: "PREVIEW",
+    title: "Interface previews that feel real",
+    copy: "Inspect landing, dashboard, login, pricing, product, and mobile app surfaces before exporting."
   }
 ];
 
-const workflow = [
-  "Choose website type",
-  "Select a design vibe",
-  "Edit or extract colors",
-  "Preview real UI",
-  "Export to your AI agent"
+const capabilities = [
+  { icon: Palette, title: "Color system", copy: "Primary, secondary, accent, background, surface, card, text, state, border, and input tokens." },
+  { icon: Image, title: "Image extraction", copy: "Upload a logo, product photo, screenshot, or moodboard and extract dominant colors locally." },
+  { icon: SlidersHorizontal, title: "Vibe mixer", copy: "Blend up to three visual directions into one usable palette and mood description." },
+  { icon: Gauge, title: "Contrast check", copy: "Check important color pairs and auto-fix text contrast for safer production UI." }
+];
+
+const exports = ["DESIGN.md", "CSS variables", "Tailwind config", "Agent prompt", "JSON tokens", "Contrast report"];
+
+const storyCards = [
+  {
+    title: "How teams avoid generic AI output",
+    copy: "A clear design system gives the coding agent constraints before it starts building."
+  },
+  {
+    title: "How founders move faster",
+    copy: "Pick a vibe, generate a system, preview UI, then paste one prompt into your builder."
+  },
+  {
+    title: "How students polish projects",
+    copy: "Turn rough ideas into a consistent website direction without learning advanced UI theory first."
+  }
 ];
 
 export function LandingPage() {
   return (
-    <main className="min-h-screen bg-white text-[#0a0a0a]">
-      <div className="bg-[#0a0a0a] px-4 py-2 text-center text-sm font-medium text-white">
-        Vibe coding starter kit: palette, preview, DESIGN.md, CSS variables, Tailwind config, and agent prompt.
-      </div>
+    <main className="min-h-screen bg-[#050806] text-white">
+      <section className="relative overflow-hidden border-b border-white/8 bg-[#050806]">
+        <div className="hero-starfield" />
+        <div className="aurora-ribbon aurora-ribbon-one" />
+        <div className="aurora-ribbon aurora-ribbon-two" />
 
-      <header className="sticky top-0 z-40 border-b border-[#ededed] bg-white/90 backdrop-blur-xl">
-        <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-          <Link href="/" className="flex items-center gap-3">
-            <span className="grid h-9 w-9 place-items-center rounded-xl bg-[#0a0a0a] text-white">
+        <header className="relative z-20 mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+          <Link href="/" className="flex items-center gap-2">
+            <span className="grid h-8 w-8 place-items-center rounded-full bg-[#00d4a4] text-[#06100d] shadow-[0_0_28px_rgba(0,212,164,0.36)]">
               <Wand2 className="h-4 w-4" />
             </span>
-            <span className="text-sm font-semibold">VibeDesign AI</span>
+            <span className="text-sm font-semibold text-white">VibeDesign AI</span>
           </Link>
-          <nav className="hidden items-center gap-7 text-sm font-medium text-[#5a5a5c] lg:flex">
-            <a href="#features" className="hover:text-[#0a0a0a]">Features</a>
-            <a href="#workflow" className="hover:text-[#0a0a0a]">Workflow</a>
-            <a href="#exports" className="hover:text-[#0a0a0a]">Exports</a>
-            <a href="#preview" className="hover:text-[#0a0a0a]">Preview</a>
+
+          <nav className="hidden items-center gap-7 text-xs font-medium text-white/62 lg:flex">
+            {quickLinks.map((item) => (
+              <a key={item} href={item === "Documentation" ? "#exports" : "#features"} className="transition hover:text-white">
+                {item}
+              </a>
+            ))}
           </nav>
+
           <div className="flex items-center gap-2">
-            <Link href="/studio" className="hidden rounded-full border border-[#e5e5e5] px-4 py-2 text-sm font-medium text-[#0a0a0a] transition hover:border-[#0a0a0a] sm:inline-flex">
-              Open Studio
+            <Link href="/studio" className="hidden rounded-full border border-white/15 px-4 py-2 text-xs font-semibold text-white transition hover:border-white/35 sm:inline-flex">
+              Contact sales
             </Link>
-            <Link href="/studio" className="inline-flex items-center gap-2 rounded-full bg-[#0a0a0a] px-4 py-2 text-sm font-medium text-white transition hover:bg-[#1c1c1e]">
-              Get started
-              <ArrowRight className="h-4 w-4" />
+            <Link href="/studio" className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-xs font-semibold text-[#050806] transition hover:bg-[#e9fff8]">
+              Start for free
+              <ArrowRight className="h-3.5 w-3.5" />
             </Link>
           </div>
-        </div>
-      </header>
+        </header>
 
-      <section className="relative overflow-hidden bg-[linear-gradient(180deg,#87a8c8_0%,#f5e9d8_100%)]">
-        <div className="landing-cloud landing-cloud-one" />
-        <div className="landing-cloud landing-cloud-two" />
-        <div className="landing-cloud landing-cloud-three" />
-
-        <div className="relative mx-auto flex min-h-[820px] max-w-7xl flex-col items-center px-4 pb-14 pt-24 text-center sm:px-6 lg:px-8 lg:pt-28">
-          <div className="rounded-full border border-white/45 bg-white/35 px-4 py-2 text-sm font-medium text-[#1c1c1e] shadow-sm backdrop-blur-md">
-            AI Design System Generator for Vibe Coding
+        <div className="relative z-10 mx-auto flex min-h-[1040px] max-w-7xl flex-col items-center px-4 pb-24 pt-16 text-center sm:px-6 lg:px-8 lg:pt-20">
+          <div className="inline-flex items-center gap-2 rounded-full border border-[#00d4a4]/25 bg-[#00d4a4]/10 px-3 py-1.5 text-xs font-semibold text-[#7cebcb]">
+            <span className="rounded-full bg-[#00d4a4] px-1.5 py-0.5 text-[10px] font-bold text-[#06100d]">NEW</span>
+            Workflow for vibe coding design systems
+            <Sparkles className="h-3.5 w-3.5" />
           </div>
-          <h1 className="mt-7 max-w-5xl text-5xl font-semibold leading-[1.04] tracking-[-0.03em] text-[#0a0a0a] sm:text-7xl lg:text-[88px]">
-            VibeDesign AI
+
+          <h1 className="mt-8 max-w-4xl text-5xl font-semibold leading-[1.04] text-white sm:text-6xl lg:text-[76px]">
+            The intelligent design system platform
           </h1>
-          <p className="mt-6 max-w-3xl text-lg leading-8 text-[#3a3a3c] sm:text-xl">
-            Turn any vibe into a beautiful website design system. Generate palettes, previews, DESIGN.md, CSS variables, Tailwind config, and prompts for your AI coding agent.
+          <p className="mt-6 max-w-2xl text-base leading-7 text-white/68 sm:text-lg">
+            Helping builders create modern, consistent website direction for AI coding agents. Generate palettes, previews, DESIGN.md, Tailwind config, and production-ready prompts.
           </p>
-          <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row">
-            <Link href="/studio" className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-[#00d4a4] px-6 py-3 text-sm font-semibold text-[#0a0a0a] shadow-[0_12px_30px_rgba(0,212,164,0.24)] transition hover:bg-[#00b48a]">
-              Generate Design System
-              <Sparkles className="h-4 w-4" />
+          <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+            <Link href="/studio" className="inline-flex min-h-11 items-center justify-center rounded-full bg-white px-5 py-3 text-sm font-semibold text-[#050806] transition hover:bg-[#e8fff7]">
+              Start now
             </Link>
-            <a href="#preview" className="inline-flex min-h-11 items-center justify-center rounded-full border border-[#d8d0c7] bg-white/45 px-6 py-3 text-sm font-semibold text-[#0a0a0a] backdrop-blur-md transition hover:bg-white/70">
-              View preview
+            <a href="#preview" className="inline-flex min-h-11 items-center justify-center rounded-full border border-white/15 bg-white/7 px-5 py-3 text-sm font-semibold text-white transition hover:border-[#00d4a4]/45 hover:bg-[#00d4a4]/10">
+              Email preview
             </a>
           </div>
 
-          <div id="preview" className="mt-16 w-full max-w-6xl scroll-mt-24 rounded-xl border border-white/70 bg-white shadow-[0_24px_48px_-8px_rgba(0,0,0,0.18)]">
+          <div id="preview" className="mt-16 w-full max-w-6xl scroll-mt-24">
             <ProductMockup />
           </div>
+
+          <LogoWall />
         </div>
       </section>
 
-      <section className="border-y border-[#ededed] bg-white">
-        <div className="mx-auto grid max-w-7xl grid-cols-2 gap-px bg-[#ededed] px-0 text-center text-sm font-semibold text-[#5a5a5c] sm:grid-cols-3 lg:grid-cols-6">
-          {["Cursor", "Windsurf", "Bolt", "Lovable", "Replit", "Claude Code"].map((name) => (
-            <div key={name} className="bg-white px-6 py-6">{name}</div>
-          ))}
-        </div>
-      </section>
-
-      <section id="features" className="bg-white px-4 py-24 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-7xl">
-          <div className="max-w-3xl">
-            <p className="text-sm font-semibold text-[#00b48a]">Everything your AI agent needs</p>
-            <h2 className="mt-3 text-4xl font-semibold leading-tight tracking-[-0.02em] text-[#0a0a0a] sm:text-5xl">
-              Stop shipping generic AI websites.
-            </h2>
-            <p className="mt-5 text-lg leading-8 text-[#5a5a5c]">
-              VibeDesign AI gives your project a real visual direction before coding starts, so components, colors, spacing, and states stay consistent.
+      <section id="features" className="border-b border-white/8 bg-[#070908] px-4 py-24 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-6xl">
+          <div className="mx-auto max-w-2xl text-center">
+            <h2 className="text-3xl font-semibold leading-tight text-white sm:text-4xl">Built for the intelligence age</h2>
+            <p className="mt-4 text-sm leading-6 text-white/55">
+              Integrate a living visual system into your workflow so websites feel intentional before code generation begins.
             </p>
           </div>
-          <div className="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-            {features.map((feature) => {
+
+          <div className="mt-12 grid gap-5 lg:grid-cols-2">
+            {featureCards.slice(0, 2).map((feature) => {
               const Icon = feature.icon;
               return (
-                <div key={feature.title} className="rounded-xl border border-[#e5e5e5] bg-white p-6 transition hover:-translate-y-1 hover:shadow-[0_12px_36px_rgba(0,0,0,0.08)]">
-                  <div className="grid h-10 w-10 place-items-center rounded-lg bg-[#f7f7f7] text-[#00b48a]">
-                    <Icon className="h-5 w-5" />
+                <div key={feature.title} className="rounded-xl border border-white/8 bg-[#0b0f0d] p-6 shadow-[0_18px_70px_rgba(0,0,0,0.28)]">
+                  <p className="text-xs font-semibold text-[#00d4a4]">{feature.label}</p>
+                  <h3 className="mt-2 text-2xl font-semibold text-white">{feature.title}</h3>
+                  <p className="mt-3 max-w-md text-sm leading-6 text-white/55">{feature.copy}</p>
+                  <div className="mt-8 rounded-lg border border-white/8 bg-[#050806] p-5">
+                    <div className="flex h-28 items-end gap-2">
+                      {[34, 62, 48, 82, 58, 92, 74].map((height, index) => (
+                        <span
+                          key={height + index}
+                          className="flex-1 rounded-t-md"
+                          style={{ height: `${height}%`, backgroundColor: index === 5 ? "#00d4a4" : "rgba(0, 212, 164, 0.18)" }}
+                        />
+                      ))}
+                    </div>
+                    <div className="mt-5 flex items-center gap-3">
+                      <span className="grid h-10 w-10 place-items-center rounded-full bg-[#00d4a4] text-[#06100d]">
+                        <Icon className="h-5 w-5" />
+                      </span>
+                      <div className="h-2 flex-1 rounded-full bg-white/8">
+                        <div className="h-2 w-2/3 rounded-full bg-[#00d4a4]" />
+                      </div>
+                    </div>
                   </div>
-                  <h3 className="mt-5 text-lg font-semibold text-[#0a0a0a]">{feature.title}</h3>
-                  <p className="mt-3 text-sm leading-6 text-[#5a5a5c]">{feature.copy}</p>
                 </div>
               );
             })}
           </div>
+
+          <div className="mt-5 rounded-xl border border-white/8 bg-[#0b0f0d] p-6">
+            <div className="mx-auto max-w-2xl text-center">
+              <p className="text-xs font-semibold text-[#00d4a4]">ASSISTANT</p>
+              <h3 className="mt-2 text-2xl font-semibold text-white">Intelligent assistance for your users</h3>
+              <p className="mt-3 text-sm leading-6 text-white/55">
+                Turn a simple visual direction into full implementation guidance across components, pages, states, and exports.
+              </p>
+            </div>
+            <div className="mt-8 grid gap-4 md:grid-cols-3">
+              {capabilities.map((item) => {
+                const Icon = item.icon;
+                return (
+                  <div key={item.title} className="rounded-lg border border-white/8 bg-[#050806] p-5">
+                    <Icon className="h-5 w-5 text-[#00d4a4]" />
+                    <h4 className="mt-4 font-semibold text-white">{item.title}</h4>
+                    <p className="mt-2 text-sm leading-6 text-white/52">{item.copy}</p>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
         </div>
       </section>
 
-      <section id="workflow" className="overflow-hidden bg-[linear-gradient(135deg,#1a3d4a_0%,#2d5a4f_100%)] px-4 py-24 text-white sm:px-6 lg:px-8">
-        <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
-          <div>
-            <p className="text-sm font-semibold text-[#7cebcb]">Built for real workflows</p>
-            <h2 className="mt-3 text-4xl font-semibold leading-tight tracking-[-0.02em] sm:text-5xl">
-              From loose idea to production-ready design direction.
-            </h2>
-            <p className="mt-5 text-lg leading-8 text-white/72">
-              Pick the website type, mix the vibe, tune the palette, inspect previews, then export clear instructions for the coding agent you already use.
-            </p>
-            <Link href="/studio" className="mt-8 inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-[#0a0a0a] transition hover:bg-[#f7f7f7]">
-              Open Studio
-              <ArrowRight className="h-4 w-4" />
-            </Link>
+      <section className="border-b border-white/8 bg-[#151817] px-4 py-24 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-6xl">
+          <div className="grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-end">
+            <div>
+              <p className="text-xs font-semibold text-[#00d4a4]">ENTERPRISE-READY DESIGN CONTEXT</p>
+              <h2 className="mt-3 max-w-xl text-4xl font-semibold leading-tight text-white">
+                Bring intelligence to every website project
+              </h2>
+              <p className="mt-5 max-w-xl text-sm leading-6 text-white/58">
+                Give AI agents the context they need: visual direction, token usage, component rules, accessibility notes, and export-ready code snippets.
+              </p>
+            </div>
+            <div className="flex justify-start lg:justify-end">
+              <Link href="/studio" className="inline-flex items-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-semibold text-[#050806] transition hover:bg-[#e8fff7]">
+                Explore studio
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
           </div>
-          <div className="rounded-xl border border-white/15 bg-white/10 p-4 backdrop-blur-md">
-            <div className="rounded-lg bg-[#0a0a0a] p-4">
-              {workflow.map((item, index) => (
-                <div key={item} className="flex items-center gap-4 border-b border-white/10 py-4 last:border-b-0">
-                  <div className="grid h-9 w-9 place-items-center rounded-full bg-[#00d4a4] text-sm font-bold text-[#0a0a0a]">
-                    {index + 1}
+
+          <div className="mt-12 grid gap-6 md:grid-cols-2">
+            <InfoBlock icon={ShieldCheck} title="Build with trust" copy="Readable contrast, focus rings, token rules, and mobile-friendly structure are generated into the instructions." />
+            <InfoBlock icon={Zap} title="Move faster" copy="Generate a polished direction first, then let Cursor, Windsurf, Bolt, Lovable, or Claude Code build with constraints." />
+          </div>
+
+          <div className="mt-12 overflow-hidden rounded-xl border border-white/10 bg-[#080d0d] shadow-[0_24px_80px_rgba(0,0,0,0.35)]">
+            <div className="grid lg:grid-cols-[1fr_0.9fr]">
+              <div className="p-8 sm:p-10">
+                <p className="text-xs font-semibold text-[#7cebcb]">CUSTOMER STORY</p>
+                <h3 className="mt-3 max-w-xl text-3xl font-semibold leading-tight text-white">
+                  See how builders accelerate AI development with VibeDesign AI
+                </h3>
+                <Link href="/studio" className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-[#7cebcb]">
+                  Read story
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
+                <div className="mt-12 grid gap-6 sm:grid-cols-2">
+                  <div>
+                    <p className="text-4xl font-semibold text-white">20+</p>
+                    <p className="mt-2 text-sm text-white/54">website types</p>
                   </div>
                   <div>
-                    <p className="font-semibold text-white">{item}</p>
-                    <p className="mt-1 text-sm text-white/55">A focused step that keeps the design system usable.</p>
+                    <p className="text-4xl font-semibold text-white">25</p>
+                    <p className="mt-2 text-sm text-white/54">vibe presets with exports</p>
                   </div>
                 </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="exports" className="bg-[#fafafa] px-4 py-24 sm:px-6 lg:px-8">
-        <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[1fr_1fr] lg:items-start">
-          <div>
-            <p className="text-sm font-semibold text-[#00b48a]">Export center</p>
-            <h2 className="mt-3 text-4xl font-semibold leading-tight tracking-[-0.02em] text-[#0a0a0a] sm:text-5xl">
-              Copy once. Build consistently.
-            </h2>
-            <p className="mt-5 text-lg leading-8 text-[#5a5a5c]">
-              Every export updates automatically as the user changes website type, vibe, colors, or prompt mode.
-            </p>
-            <div className="mt-8 grid gap-3 sm:grid-cols-2">
-              {["DESIGN.md", "CSS variables", "Tailwind config", "Agent prompt", "JSON tokens", "Contrast report"].map((item) => (
-                <div key={item} className="flex items-center gap-3 rounded-lg border border-[#e5e5e5] bg-white px-4 py-3 text-sm font-medium text-[#1c1c1e]">
-                  <Check className="h-4 w-4 text-[#00b48a]" />
-                  {item}
+              </div>
+              <div className="min-h-80 bg-[linear-gradient(135deg,#0f172a_0%,#0f766e_45%,#f59e0b_100%)] p-8">
+                <div className="grid h-full place-items-center rounded-xl border border-white/20 bg-black/24 p-8 backdrop-blur-sm">
+                  <div className="relative h-48 w-32 rounded-t-full border-[18px] border-[#f59e0b] border-b-0 shadow-[0_0_70px_rgba(245,158,11,0.42)]">
+                    <div className="absolute inset-x-5 top-8 h-28 rounded-t-full bg-[#0f172a]/65" />
+                  </div>
                 </div>
-              ))}
+              </div>
             </div>
-          </div>
-          <div className="overflow-hidden rounded-xl border border-[#e5e5e5] bg-[#1c1c1e] text-white shadow-[0_20px_50px_rgba(0,0,0,0.16)]">
-            <div className="flex items-center justify-between border-b border-white/10 px-4 py-3 text-sm text-white/60">
-              <span>DESIGN.md</span>
-              <Download className="h-4 w-4" />
-            </div>
-            <pre className="p-5 text-sm leading-6 text-white/80">
-{`# DESIGN.md
-
-## Brand Vibe
-Modern, premium, clear, and usable.
-
-## Color System
-- Primary: #00D4A4
-- Background: #080A12
-- Surface: #111827
-- Text Primary: #FFFFFF
-
-## Agent Instruction
-Follow this design system exactly.
-Do not introduce random colors.`}
-            </pre>
           </div>
         </div>
       </section>
 
-      <section className="bg-white px-4 py-24 sm:px-6 lg:px-8">
+      <section className="border-b border-white/8 bg-[#070908] px-4 py-24 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-6xl">
+          <div className="mx-auto max-w-2xl text-center">
+            <h2 className="text-3xl font-semibold leading-tight text-white sm:text-4xl">Loved by builders who ship with AI</h2>
+            <p className="mt-4 text-sm leading-6 text-white/55">
+              From student projects to startup prototypes, VibeDesign AI gives every build a consistent visual language.
+            </p>
+          </div>
+          <div className="mt-12 grid gap-5 lg:grid-cols-3">
+            {storyCards.map((card, index) => (
+              <div key={card.title} className="overflow-hidden rounded-xl border border-white/8 bg-[#0b0f0d]">
+                <div className={`h-44 ${index === 0 ? "bg-[linear-gradient(135deg,#064e3b,#0ea5e9)]" : index === 1 ? "bg-[linear-gradient(135deg,#111827,#52525b)]" : "bg-[linear-gradient(135deg,#00d4a4,#164e63)]"}`}>
+                  <div className="grid h-full place-items-center text-4xl font-semibold text-white/84">{index === 0 ? "AI" : index === 1 ? "UX" : "UI"}</div>
+                </div>
+                <div className="p-5">
+                  <h3 className="font-semibold text-white">{card.title}</h3>
+                  <p className="mt-3 text-sm leading-6 text-white/52">{card.copy}</p>
+                  <Link href="/studio" className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-[#7cebcb]">
+                    Read story
+                    <ArrowRight className="h-4 w-4" />
+                  </Link>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="exports" className="bg-[#050806] px-4 py-24 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-5xl text-center">
-          <h2 className="text-4xl font-semibold leading-tight tracking-[-0.02em] text-[#0a0a0a] sm:text-5xl">
-            Ready to make your next website look intentional?
-          </h2>
-          <p className="mx-auto mt-5 max-w-2xl text-lg leading-8 text-[#5a5a5c]">
-            Open the studio, generate a design system, and paste the result into your vibe coding workflow.
+          <h2 className="text-3xl font-semibold leading-tight text-white sm:text-4xl">Make design direction your winning advantage</h2>
+          <p className="mx-auto mt-4 max-w-2xl text-sm leading-6 text-white/55">
+            Join builders who give their coding agent a real visual system before asking it to write the first component.
           </p>
-          <div className="mt-8 flex justify-center">
-            <Link href="/studio" className="inline-flex items-center gap-2 rounded-full bg-[#0a0a0a] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#1c1c1e]">
-              Start building with VibeDesign AI
-              <ArrowRight className="h-4 w-4" />
+          <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+            <Link href="/studio" className="inline-flex min-h-11 items-center justify-center rounded-full bg-white px-5 py-3 text-sm font-semibold text-[#050806] transition hover:bg-[#e8fff7]">
+              Get started for free
+            </Link>
+            <Link href="/studio" className="inline-flex min-h-11 items-center justify-center rounded-full border border-white/15 px-5 py-3 text-sm font-semibold text-white transition hover:border-[#00d4a4]/45">
+              Get a demo
             </Link>
           </div>
+
+          <div className="mt-16 grid gap-4 md:grid-cols-3">
+            {exports.map((item) => (
+              <div key={item} className="rounded-xl border border-white/8 bg-[#0b0f0d] p-5 text-left">
+                <Check className="h-5 w-5 text-[#00d4a4]" />
+                <p className="mt-4 font-semibold text-white">{item}</p>
+                <p className="mt-2 text-sm leading-6 text-white/52">Ready to copy from the studio export center.</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
-      <footer className="border-t border-[#e5e5e5] bg-white px-4 py-12 sm:px-6 lg:px-8">
-        <div className="mx-auto flex max-w-7xl flex-col gap-5 text-sm text-[#5a5a5c] md:flex-row md:items-center md:justify-between">
-          <div>
-            <p className="font-semibold text-[#0a0a0a]">VibeDesign AI</p>
-            <p className="mt-1">Turn any vibe into a beautiful website design system.</p>
+      <footer className="border-t border-white/8 bg-[#050806] px-4 py-14 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-6xl">
+          <div className="flex flex-col gap-6 border-b border-white/8 pb-10 md:flex-row md:items-center md:justify-between">
+            <Link href="/" className="flex items-center gap-2">
+              <span className="grid h-8 w-8 place-items-center rounded-full bg-[#00d4a4] text-[#06100d]">
+                <Wand2 className="h-4 w-4" />
+              </span>
+              <span className="text-sm font-semibold text-white">VibeDesign AI</span>
+            </Link>
+            <div className="flex flex-wrap gap-5 text-sm text-white/48">
+              <Link href="/studio" className="hover:text-white">Studio</Link>
+              <a href="#features" className="hover:text-white">Features</a>
+              <a href="#exports" className="hover:text-white">Exports</a>
+              <Link href="/studio" className="hover:text-white">Documentation</Link>
+            </div>
           </div>
-          <div className="flex flex-wrap gap-5">
-            <Link href="/studio" className="hover:text-[#0a0a0a]">Studio</Link>
-            <a href="#features" className="hover:text-[#0a0a0a]">Features</a>
-            <a href="#exports" className="hover:text-[#0a0a0a]">Exports</a>
+          <div className="mt-8 flex flex-col gap-3 text-xs text-white/36 sm:flex-row sm:items-center sm:justify-between">
+            <span>AI design systems powered by clear constraints.</span>
+            <span>2026 VibeDesign AI.</span>
           </div>
         </div>
       </footer>
@@ -265,66 +339,121 @@ Do not introduce random colors.`}
   );
 }
 
-function ProductMockup() {
-  const palette = ["#00d4a4", "#7C3AED", "#06B6D4", "#080A12", "#FFFFFF", "#F59E0B"];
+function LogoWall() {
+  const logos = ["Cursor", "Windsurf", "Bolt", "Lovable", "Replit", "v0", "Claude Code", "Bolt.new"];
 
   return (
-    <div className="grid min-h-[410px] overflow-hidden rounded-xl bg-white text-left lg:grid-cols-[230px_1fr_220px]">
-      <aside className="hidden border-r border-[#ededed] bg-[#fafafa] p-5 lg:block">
-        <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#888888]">Studio</p>
-        {["Generate", "Palette", "Image Extract", "Preview", "Export"].map((item, index) => (
-          <div key={item} className={`mt-3 rounded-md px-3 py-2 text-sm ${index === 1 ? "bg-white font-medium text-[#0a0a0a] shadow-sm" : "text-[#5a5a5c]"}`}>
-            {item}
+    <div className="mt-20 w-full max-w-5xl">
+      <div className="grid grid-cols-2 gap-6 text-sm font-semibold text-white/58 sm:grid-cols-4">
+        {logos.map((logo) => (
+          <div key={logo} className="flex items-center justify-center gap-2">
+            <span className="h-2 w-2 rounded-full bg-[#00d4a4]" />
+            {logo}
           </div>
         ))}
-      </aside>
-      <div className="p-5 sm:p-7">
-        <div className="flex items-center justify-between">
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#00b48a]">Vibe selected</p>
-            <h3 className="mt-2 text-2xl font-semibold text-[#0a0a0a]">Dark Premium SaaS</h3>
-          </div>
-          <button className="rounded-full bg-[#0a0a0a] px-4 py-2 text-sm font-medium text-white">Export</button>
-        </div>
+      </div>
+    </div>
+  );
+}
 
-        <div className="mt-6 grid gap-3 sm:grid-cols-3">
-          {palette.map((color) => (
-            <div key={color} className="rounded-lg border border-[#e5e5e5] bg-white p-3">
-              <div className="h-16 rounded-md" style={{ backgroundColor: color }} />
-              <p className="mt-3 text-xs font-medium text-[#5a5a5c]">{color}</p>
+function ProductMockup() {
+  const nav = ["Ask Assistant", "Quickstart", "Global Settings", "AI optimization", "Components", "Themes"];
+  const cards = [
+    { icon: Wand2, title: "Vibe selector", copy: "Pick from 25 styles" },
+    { icon: Upload, title: "Image extraction", copy: "Sample brand colors" },
+    { icon: Braces, title: "Agent prompt", copy: "Ready-to-copy output" },
+    { icon: Code2, title: "Tailwind config", copy: "Token-driven setup" }
+  ];
+
+  return (
+    <div className="rounded-xl border border-white/12 bg-[#050806] p-2 shadow-[0_30px_90px_rgba(0,0,0,0.55)]">
+      <div className="grid min-h-[520px] overflow-hidden rounded-lg border border-white/8 bg-[#070908] text-left lg:grid-cols-[250px_1fr_220px]">
+        <aside className="hidden border-r border-white/8 bg-[#060806] p-5 lg:block">
+          <div className="mb-6 flex items-center gap-2">
+            <span className="grid h-7 w-7 place-items-center rounded-full bg-[#00d4a4] text-[#06100d]">
+              <Wand2 className="h-3.5 w-3.5" />
+            </span>
+            <span className="text-sm font-semibold text-white">vibedesign</span>
+          </div>
+          {nav.map((item, index) => (
+            <div key={item} className={`mt-1 rounded-md px-3 py-2 text-sm ${index === 1 ? "bg-[#00d4a4]/12 font-medium text-[#7cebcb]" : "text-white/44"}`}>
+              {item}
             </div>
           ))}
-        </div>
+        </aside>
 
-        <div className="mt-6 rounded-lg border border-[#e5e5e5] bg-[#f7f7f7] p-4">
-          <div className="flex items-center justify-between">
-            <p className="font-semibold text-[#0a0a0a]">Live landing preview</p>
-            <span className="rounded-full bg-[#00d4a4] px-3 py-1 text-xs font-bold text-[#0a0a0a]">Good contrast</span>
-          </div>
-          <div className="mt-4 rounded-lg bg-[#080A12] p-5 text-white">
-            <p className="text-xs text-white/55">Generated hero</p>
-            <p className="mt-2 max-w-md text-2xl font-semibold leading-tight">Build better websites with a clear visual system.</p>
-            <div className="mt-5 flex gap-2">
-              <span className="rounded-full bg-[#7C3AED] px-4 py-2 text-xs font-semibold">Start Building</span>
-              <span className="rounded-full border border-white/15 px-4 py-2 text-xs font-semibold">View Preview</span>
+        <div className="p-5 sm:p-7">
+          <div className="flex flex-col gap-4 border-b border-white/8 pb-5 sm:flex-row sm:items-center sm:justify-between">
+            <div className="flex items-center gap-5 text-sm font-medium">
+              <span className="text-[#00d4a4]">Guide</span>
+              <span className="text-white/38">API Reference</span>
+              <span className="text-white/38">Changelog</span>
+            </div>
+            <div className="flex items-center gap-2 rounded-md border border-white/8 bg-white/[0.03] px-3 py-2 text-xs text-white/40">
+              <Search className="h-3.5 w-3.5" />
+              Search or ask
             </div>
           </div>
+
+          <div className="mt-6">
+            <p className="text-sm font-semibold text-white">Getting Started</p>
+            <h3 className="mt-2 text-2xl font-semibold text-white">Quickstart Guide</h3>
+            <p className="mt-2 max-w-xl text-sm leading-6 text-white/48">
+              Start building intelligent design systems with palette extraction, live previews, and AI-ready exports.
+            </p>
+          </div>
+
+          <div className="mt-6 grid gap-4 sm:grid-cols-2">
+            {cards.map((card) => {
+              const Icon = card.icon;
+              return (
+                <div key={card.title} className="rounded-lg border border-[#00d4a4]/10 bg-[#052017]/70 p-5">
+                  <Icon className="h-8 w-8 text-[#00d4a4]" />
+                  <p className="mt-5 font-semibold text-white">{card.title}</p>
+                  <p className="mt-2 text-sm leading-5 text-white/45">{card.copy}</p>
+                </div>
+              );
+            })}
+          </div>
         </div>
+
+        <aside className="hidden border-l border-white/8 p-5 lg:block">
+          <p className="text-xs font-semibold text-white/38">ON THIS PAGE</p>
+          {["Introduction", "Select vibe", "Generate palette", "Export files"].map((item, index) => (
+            <p key={item} className={`mt-3 text-sm ${index === 0 ? "text-[#7cebcb]" : "text-white/38"}`}>{item}</p>
+          ))}
+          <div className="mt-8 rounded-lg border border-white/8 bg-white/[0.03] p-4">
+            <p className="text-sm font-semibold text-white">Export status</p>
+            <div className="mt-4 space-y-3">
+              {["DESIGN.md", "CSS variables", "Agent prompt"].map((item) => (
+                <div key={item} className="flex items-center justify-between text-sm text-white/48">
+                  <span>{item}</span>
+                  <Check className="h-4 w-4 text-[#00d4a4]" />
+                </div>
+              ))}
+            </div>
+            <button className="mt-5 w-full rounded-full bg-[#00d4a4] px-4 py-2 text-xs font-bold text-[#06100d]">Copy all</button>
+          </div>
+        </aside>
       </div>
-      <aside className="hidden border-l border-[#ededed] p-5 lg:block">
-        <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#888888]">Output</p>
-        <div className="mt-4 rounded-lg bg-[#1c1c1e] p-4 font-mono text-xs leading-5 text-white/72">
-          <p className="text-[#7cebcb]"># DESIGN.md</p>
-          <p>## Color System</p>
-          <p>primary: #00d4a4</p>
-          <p>surface: #111827</p>
-          <p>card: #161B22</p>
-        </div>
-        <div className="mt-4 rounded-lg border border-[#e5e5e5] p-4">
-          <p className="text-sm font-semibold">Agent prompt</p>
-          <p className="mt-2 text-sm leading-6 text-[#5a5a5c]">Build responsive UI. Follow DESIGN.md. Do not invent colors.</p>
-        </div>
-      </aside>
+    </div>
+  );
+}
+
+function InfoBlock({
+  icon: Icon,
+  title,
+  copy
+}: {
+  icon: typeof ShieldCheck;
+  title: string;
+  copy: string;
+}) {
+  return (
+    <div className="rounded-xl border border-white/8 bg-[#101312] p-6">
+      <Icon className="h-5 w-5 text-[#00d4a4]" />
+      <h3 className="mt-5 text-lg font-semibold text-white">{title}</h3>
+      <p className="mt-3 text-sm leading-6 text-white/55">{copy}</p>
     </div>
   );
 }
