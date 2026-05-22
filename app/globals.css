@@ -75,3 +75,32 @@ pre {
 .focus-ring:focus-visible {
   box-shadow: 0 0 0 3px rgba(34, 211, 238, 0.25), 0 0 0 1px rgba(34, 211, 238, 0.8);
 }
+
+.landing-cloud {
+  position: absolute;
+  pointer-events: none;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.38);
+  filter: blur(18px);
+}
+
+.landing-cloud-one {
+  left: -6rem;
+  top: 7rem;
+  width: 28rem;
+  height: 10rem;
+}
+
+.landing-cloud-two {
+  right: -8rem;
+  top: 14rem;
+  width: 34rem;
+  height: 12rem;
+}
+
+.landing-cloud-three {
+  bottom: 12rem;
+  left: 22%;
+  width: 24rem;
+  height: 8rem;
+}
