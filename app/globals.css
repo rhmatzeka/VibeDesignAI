@@ -113,3 +113,59 @@ pre {
   height: 19rem;
   background: radial-gradient(ellipse at center, rgba(14, 165, 233, 0.45), rgba(0, 212, 164, 0.18) 42%, transparent 72%);
 }
+
+.pixel-blast-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.pixel-blast-container canvas {
+  display: block;
+}
+
+.pixel-blast-fallback {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 36% 46%, rgba(0, 212, 164, 0.28), transparent 22rem),
+    radial-gradient(circle at 64% 40%, rgba(14, 165, 233, 0.16), transparent 24rem);
+}
+
+.pixel-blast-fallback span {
+  position: absolute;
+  width: 18rem;
+  height: 18rem;
+  border-radius: 9999px;
+  background: rgba(0, 212, 164, 0.12);
+  filter: blur(48px);
+  animation: pixel-float 8s ease-in-out infinite alternate;
+}
+
+.pixel-blast-fallback span:nth-child(1) {
+  left: 18%;
+  top: 22%;
+}
+
+.pixel-blast-fallback span:nth-child(2) {
+  right: 18%;
+  top: 30%;
+  animation-delay: -2s;
+}
+
+.pixel-blast-fallback span:nth-child(3) {
+  left: 42%;
+  bottom: 18%;
+  animation-delay: -4s;
+}
+
+@keyframes pixel-float {
+  from {
+    transform: translate3d(-1rem, 0, 0) scale(0.9);
+  }
+  to {
+    transform: translate3d(1rem, 1.5rem, 0) scale(1.08);
+  }
+}

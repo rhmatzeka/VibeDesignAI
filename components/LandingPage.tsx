@@ -18,7 +18,7 @@ import {
   Workflow,
   Zap
 } from "lucide-react";
-import PixelBlast from "./PixelBlast";
+import { PixelBlastLayer } from "./PixelBlastLayer";
 
 const quickLinks = ["Resources", "Documentation", "Customers", "Blog", "Pricing"];
 
@@ -73,26 +73,7 @@ export function LandingPage() {
       <section className="relative overflow-hidden border-b border-white/8 bg-[#050806]">
         <div className="hero-starfield opacity-35" />
         <div className="absolute inset-0 z-0 opacity-100">
-          <PixelBlast
-            variant="circle"
-            pixelSize={7}
-            color="#00d4a4"
-            patternScale={2.4}
-            patternDensity={1.55}
-            pixelSizeJitter={0.7}
-            enableRipples
-            rippleSpeed={0.42}
-            rippleThickness={0.16}
-            rippleIntensityScale={2.1}
-            liquid
-            liquidStrength={0.11}
-            liquidRadius={1.25}
-            liquidWobbleSpeed={5.2}
-            speed={0.62}
-            edgeFade={0.18}
-            noiseAmount={0.025}
-            transparent
-          />
+          <PixelBlastLayer />
         </div>
         <div className="aurora-ribbon aurora-ribbon-one" />
         <div className="aurora-ribbon aurora-ribbon-two" />
