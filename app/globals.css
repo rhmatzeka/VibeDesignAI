@@ -46,6 +46,13 @@ pre {
   background: rgba(124, 58, 237, 0.55);
 }
 
+.hero-section {
+  background:
+    radial-gradient(ellipse 56rem 28rem at 50% 28%, rgba(0, 212, 164, 0.16), transparent 74%),
+    radial-gradient(ellipse 52rem 30rem at 64% 32%, rgba(14, 165, 233, 0.16), transparent 76%),
+    linear-gradient(180deg, #020917 0%, #031527 22%, #063646 46%, #052f36 62%, #041514 80%, #050806 100%);
+}
+
 .studio-scroll {
   scrollbar-width: thin;
   scrollbar-color: rgba(255, 255, 255, 0.18) transparent;
@@ -104,16 +111,15 @@ pre {
 
 .hero-pixel-field {
   position: absolute;
-  inset: 0 0 auto;
+  inset: 0;
   z-index: 0;
-  height: 1380px;
   pointer-events: none;
   overflow: hidden;
   background:
-    radial-gradient(ellipse 44rem 30rem at 50% 46%, rgba(0, 212, 164, 0.22), rgba(0, 125, 111, 0.12) 44%, transparent 76%),
-    radial-gradient(ellipse 48rem 28rem at 63% 44%, rgba(14, 165, 233, 0.22), transparent 78%),
-    radial-gradient(ellipse 40rem 24rem at 28% 44%, rgba(22, 78, 99, 0.4), transparent 78%),
-    linear-gradient(180deg, #020917 0%, #031527 24%, #063646 54%, #052f36 72%, #041514 88%, #050806 100%);
+    radial-gradient(ellipse 44rem 30rem at 50% 36%, rgba(0, 212, 164, 0.2), rgba(0, 125, 111, 0.1) 44%, transparent 76%),
+    radial-gradient(ellipse 48rem 28rem at 63% 38%, rgba(14, 165, 233, 0.2), transparent 78%),
+    radial-gradient(ellipse 40rem 24rem at 28% 38%, rgba(22, 78, 99, 0.34), transparent 78%),
+    linear-gradient(180deg, transparent 0%, rgba(5, 47, 54, 0.62) 45%, rgba(4, 21, 20, 0.7) 72%, #050806 100%);
   opacity: 1;
 }
 

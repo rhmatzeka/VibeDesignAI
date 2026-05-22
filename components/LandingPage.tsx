@@ -69,13 +69,13 @@ const storyCards = [
 export function LandingPage() {
   return (
     <main className="min-h-screen bg-[#050806] text-white">
-      <section className="relative overflow-hidden border-b border-white/8 bg-[#050806]">
+      <section className="hero-section relative overflow-hidden border-b border-white/8">
         <div className="hero-starfield opacity-35" />
         <div className="hero-pixel-field" aria-hidden="true" />
         <div className="aurora-ribbon aurora-ribbon-one" />
         <div className="aurora-ribbon aurora-ribbon-two" />
 
-        <header className="sticky top-0 z-50 border-b border-white/10 bg-[#050806]">
+        <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-[#050806]">
           <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
             <Link href="/" className="flex items-center gap-2">
               <span className="grid h-8 w-8 place-items-center rounded-full bg-[#00d4a4] text-[#06100d] shadow-[0_0_28px_rgba(0,212,164,0.36)]">
@@ -104,7 +104,7 @@ export function LandingPage() {
           </div>
         </header>
 
-        <div className="relative z-10 mx-auto flex min-h-[980px] max-w-7xl flex-col items-center px-4 pb-24 pt-14 text-center sm:px-6 lg:min-h-[1010px] lg:px-8">
+        <div className="relative z-10 mx-auto flex min-h-[980px] max-w-7xl flex-col items-center px-4 pb-24 pt-28 text-center sm:px-6 lg:min-h-[1010px] lg:px-8">
           <div className="inline-flex items-center gap-2 rounded-full border border-[#00d4a4]/25 bg-[#00d4a4]/10 px-3 py-1.5 text-xs font-semibold text-[#7cebcb]">
             <span className="rounded-full bg-[#00d4a4] px-1.5 py-0.5 text-[10px] font-bold text-[#06100d]">NEW</span>
             Workflow for vibe coding design systems
