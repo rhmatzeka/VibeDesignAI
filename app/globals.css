@@ -106,14 +106,14 @@ pre {
   position: absolute;
   inset: 0 0 auto;
   z-index: 0;
-  height: 980px;
+  height: 1380px;
   pointer-events: none;
   overflow: hidden;
   background:
-    radial-gradient(ellipse 44rem 30rem at 50% 64%, rgba(0, 212, 164, 0.22), rgba(0, 125, 111, 0.12) 44%, transparent 76%),
-    radial-gradient(ellipse 48rem 28rem at 63% 62%, rgba(14, 165, 233, 0.22), transparent 78%),
-    radial-gradient(ellipse 40rem 24rem at 28% 58%, rgba(22, 78, 99, 0.4), transparent 78%),
-    linear-gradient(180deg, #020917 0%, #031527 34%, #063646 70%, #052f36 100%);
+    radial-gradient(ellipse 44rem 30rem at 50% 46%, rgba(0, 212, 164, 0.22), rgba(0, 125, 111, 0.12) 44%, transparent 76%),
+    radial-gradient(ellipse 48rem 28rem at 63% 44%, rgba(14, 165, 233, 0.22), transparent 78%),
+    radial-gradient(ellipse 40rem 24rem at 28% 44%, rgba(22, 78, 99, 0.4), transparent 78%),
+    linear-gradient(180deg, #020917 0%, #031527 24%, #063646 54%, #052f36 72%, #041514 88%, #050806 100%);
   opacity: 1;
 }
 
@@ -127,21 +127,21 @@ pre {
 
 .hero-pixel-field::before {
   background:
-    radial-gradient(ellipse 14rem 34rem at 50% 82%, rgba(0, 255, 181, 0.24), transparent 70%),
-    radial-gradient(ellipse 12rem 32rem at 58% 84%, rgba(30, 214, 158, 0.2), transparent 72%),
-    radial-gradient(ellipse 11rem 28rem at 44% 87%, rgba(64, 255, 205, 0.16), transparent 70%);
+    radial-gradient(ellipse 14rem 34rem at 50% 58%, rgba(0, 255, 181, 0.24), transparent 70%),
+    radial-gradient(ellipse 12rem 32rem at 58% 60%, rgba(30, 214, 158, 0.2), transparent 72%),
+    radial-gradient(ellipse 11rem 28rem at 44% 63%, rgba(64, 255, 205, 0.16), transparent 70%);
   filter: blur(14px);
   opacity: 0.78;
   transform: rotate(-10deg) scaleY(1.08);
-  transform-origin: 50% 85%;
+  transform-origin: 50% 62%;
   mask-image: linear-gradient(180deg, transparent 0%, black 32%, black 100%);
 }
 
 .hero-pixel-field::after {
   background:
-    radial-gradient(ellipse 38rem 15rem at 4% 74%, rgba(26, 92, 126, 0.48), transparent 76%),
-    radial-gradient(ellipse 44rem 18rem at 96% 78%, rgba(0, 151, 143, 0.26), transparent 78%),
-    linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(2, 8, 11, 0.34) 100%);
+    radial-gradient(ellipse 38rem 15rem at 4% 54%, rgba(26, 92, 126, 0.48), transparent 76%),
+    radial-gradient(ellipse 44rem 18rem at 96% 58%, rgba(0, 151, 143, 0.26), transparent 78%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(2, 8, 11, 0.12) 54%, #050806 100%);
   opacity: 0.9;
 }
 

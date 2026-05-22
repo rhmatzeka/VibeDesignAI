@@ -75,30 +75,32 @@ export function LandingPage() {
         <div className="aurora-ribbon aurora-ribbon-one" />
         <div className="aurora-ribbon aurora-ribbon-two" />
 
-        <header className="relative z-20 mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-          <Link href="/" className="flex items-center gap-2">
-            <span className="grid h-8 w-8 place-items-center rounded-full bg-[#00d4a4] text-[#06100d] shadow-[0_0_28px_rgba(0,212,164,0.36)]">
-              <Wand2 className="h-4 w-4" />
-            </span>
-            <span className="text-sm font-semibold text-white">VibeDesign AI</span>
-          </Link>
-
-          <nav className="hidden items-center gap-7 text-xs font-medium text-white/62 lg:flex">
-            {quickLinks.map((item) => (
-              <a key={item} href={item === "Documentation" ? "#exports" : "#features"} className="transition hover:text-white">
-                {item}
-              </a>
-            ))}
-          </nav>
-
-          <div className="flex items-center gap-2">
-            <Link href="/studio" className="hidden rounded-full border border-white/15 px-4 py-2 text-xs font-semibold text-white transition hover:border-white/35 sm:inline-flex">
-              Contact sales
+        <header className="sticky top-0 z-50 border-b border-white/10 bg-[#050806]">
+          <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+            <Link href="/" className="flex items-center gap-2">
+              <span className="grid h-8 w-8 place-items-center rounded-full bg-[#00d4a4] text-[#06100d] shadow-[0_0_28px_rgba(0,212,164,0.36)]">
+                <Wand2 className="h-4 w-4" />
+              </span>
+              <span className="text-sm font-semibold text-white">VibeDesign AI</span>
             </Link>
-            <Link href="/studio" className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-xs font-semibold text-[#050806] transition hover:bg-[#e9fff8]">
-              Start for free
-              <ArrowRight className="h-3.5 w-3.5" />
-            </Link>
+
+            <nav className="hidden items-center gap-7 text-xs font-medium text-white/62 lg:flex">
+              {quickLinks.map((item) => (
+                <a key={item} href={item === "Documentation" ? "#exports" : "#features"} className="transition hover:text-white">
+                  {item}
+                </a>
+              ))}
+            </nav>
+
+            <div className="flex items-center gap-2">
+              <Link href="/studio" className="hidden rounded-full border border-white/15 px-4 py-2 text-xs font-semibold text-white transition hover:border-white/35 sm:inline-flex">
+                Contact sales
+              </Link>
+              <Link href="/studio" className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-xs font-semibold text-[#050806] transition hover:bg-[#e9fff8]">
+                Start for free
+                <ArrowRight className="h-3.5 w-3.5" />
+              </Link>
+            </div>
           </div>
         </header>
 
