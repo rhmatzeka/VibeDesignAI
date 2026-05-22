@@ -71,25 +71,26 @@ export function LandingPage() {
   return (
     <main className="min-h-screen bg-[#050806] text-white">
       <section className="relative overflow-hidden border-b border-white/8 bg-[#050806]">
-        <div className="hero-starfield" />
-        <div className="absolute inset-0 z-0 opacity-70">
+        <div className="hero-starfield opacity-35" />
+        <div className="absolute inset-0 z-0 opacity-100">
           <PixelBlast
             variant="circle"
-            pixelSize={5}
+            pixelSize={7}
             color="#00d4a4"
-            patternScale={3}
-            patternDensity={1.08}
-            pixelSizeJitter={0.45}
+            patternScale={2.4}
+            patternDensity={1.55}
+            pixelSizeJitter={0.7}
             enableRipples
-            rippleSpeed={0.36}
-            rippleThickness={0.12}
-            rippleIntensityScale={1.35}
+            rippleSpeed={0.42}
+            rippleThickness={0.16}
+            rippleIntensityScale={2.1}
             liquid
-            liquidStrength={0.08}
-            liquidRadius={1.1}
-            liquidWobbleSpeed={4.8}
-            speed={0.42}
-            edgeFade={0.42}
+            liquidStrength={0.11}
+            liquidRadius={1.25}
+            liquidWobbleSpeed={5.2}
+            speed={0.62}
+            edgeFade={0.18}
+            noiseAmount={0.025}
             transparent
           />
         </div>
