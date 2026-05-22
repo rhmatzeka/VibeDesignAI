@@ -18,7 +18,6 @@ import {
   Workflow,
   Zap
 } from "lucide-react";
-import { PixelBlastLayer } from "./PixelBlastLayer";
 
 const quickLinks = ["Resources", "Documentation", "Customers", "Blog", "Pricing"];
 
@@ -72,9 +71,7 @@ export function LandingPage() {
     <main className="min-h-screen bg-[#050806] text-white">
       <section className="relative overflow-hidden border-b border-white/8 bg-[#050806]">
         <div className="hero-starfield opacity-35" />
-        <div className="absolute inset-0 z-0 opacity-100">
-          <PixelBlastLayer />
-        </div>
+        <div className="hero-pixel-field" aria-hidden="true" />
         <div className="aurora-ribbon aurora-ribbon-one" />
         <div className="aurora-ribbon aurora-ribbon-two" />
 
@@ -105,29 +102,33 @@ export function LandingPage() {
           </div>
         </header>
 
-        <div className="relative z-10 mx-auto flex min-h-[1040px] max-w-7xl flex-col items-center px-4 pb-24 pt-16 text-center sm:px-6 lg:px-8 lg:pt-20">
+        <div className="relative z-10 mx-auto flex min-h-[980px] max-w-7xl flex-col items-center px-4 pb-24 pt-14 text-center sm:px-6 lg:min-h-[1010px] lg:px-8">
           <div className="inline-flex items-center gap-2 rounded-full border border-[#00d4a4]/25 bg-[#00d4a4]/10 px-3 py-1.5 text-xs font-semibold text-[#7cebcb]">
             <span className="rounded-full bg-[#00d4a4] px-1.5 py-0.5 text-[10px] font-bold text-[#06100d]">NEW</span>
             Workflow for vibe coding design systems
             <Sparkles className="h-3.5 w-3.5" />
           </div>
 
-          <h1 className="mt-8 max-w-4xl text-5xl font-semibold leading-[1.04] text-white sm:text-6xl lg:text-[76px]">
+          <h1 className="mt-8 max-w-4xl text-5xl font-semibold leading-[1.04] text-white sm:text-6xl lg:text-[68px]">
             The intelligent design system platform
           </h1>
           <p className="mt-6 max-w-2xl text-base leading-7 text-white/68 sm:text-lg">
             Helping builders create modern, consistent website direction for AI coding agents. Generate palettes, previews, DESIGN.md, Tailwind config, and production-ready prompts.
           </p>
-          <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <Link href="/studio" className="inline-flex min-h-11 items-center justify-center rounded-full bg-white px-5 py-3 text-sm font-semibold text-[#050806] transition hover:bg-[#e8fff7]">
+          <form action="/studio" className="mt-9 flex w-full max-w-xl items-center rounded-full border border-white/20 bg-white/12 p-1.5 text-left shadow-[0_24px_80px_rgba(0,0,0,0.24)] backdrop-blur-xl">
+            <input
+              aria-label="Email address"
+              name="email"
+              type="email"
+              placeholder="Email address"
+              className="min-w-0 flex-1 bg-transparent px-5 text-base font-medium text-white outline-none placeholder:text-white/44"
+            />
+            <button className="shrink-0 rounded-full bg-white px-6 py-3 text-sm font-semibold text-[#050806] transition hover:bg-[#e8fff7]">
               Start now
-            </Link>
-            <a href="#preview" className="inline-flex min-h-11 items-center justify-center rounded-full border border-white/15 bg-white/7 px-5 py-3 text-sm font-semibold text-white transition hover:border-[#00d4a4]/45 hover:bg-[#00d4a4]/10">
-              Email preview
-            </a>
-          </div>
+            </button>
+          </form>
 
-          <div id="preview" className="mt-16 w-full max-w-6xl scroll-mt-24">
+          <div id="preview" className="mt-10 w-full max-w-[1120px] scroll-mt-24">
             <ProductMockup />
           </div>
 
@@ -367,73 +368,73 @@ function ProductMockup() {
   ];
 
   return (
-    <div className="rounded-xl border border-white/12 bg-[#050806] p-2 shadow-[0_30px_90px_rgba(0,0,0,0.55)]">
-      <div className="grid min-h-[520px] overflow-hidden rounded-lg border border-white/8 bg-[#070908] text-left lg:grid-cols-[250px_1fr_220px]">
-        <aside className="hidden border-r border-white/8 bg-[#060806] p-5 lg:block">
-          <div className="mb-6 flex items-center gap-2">
-            <span className="grid h-7 w-7 place-items-center rounded-full bg-[#00d4a4] text-[#06100d]">
+    <div className="rounded-[2rem] border border-white/[0.22] bg-[#030605] p-2 shadow-[0_34px_110px_rgba(0,0,0,0.68),0_0_0_1px_rgba(0,212,164,0.08)]">
+      <div className="grid min-h-[560px] overflow-hidden rounded-[1.55rem] border border-white/10 bg-[#050706] text-left lg:grid-cols-[260px_minmax(0,1fr)_230px]">
+        <aside className="hidden border-r border-white/10 bg-[#040605] p-7 lg:block">
+          <div className="mb-10 flex items-center gap-3">
+            <span className="grid h-8 w-8 place-items-center rounded-full bg-[#00d4a4] text-[#06100d]">
               <Wand2 className="h-3.5 w-3.5" />
             </span>
-            <span className="text-sm font-semibold text-white">vibedesign</span>
+            <span className="text-base font-semibold text-white">vibedesign</span>
           </div>
           {nav.map((item, index) => (
-            <div key={item} className={`mt-1 rounded-md px-3 py-2 text-sm ${index === 1 ? "bg-[#00d4a4]/12 font-medium text-[#7cebcb]" : "text-white/44"}`}>
+            <div key={item} className={`mt-1 rounded-lg px-3 py-3 text-sm ${index === 1 ? "bg-[#00d4a4]/12 font-semibold text-[#7cebcb]" : "text-white/48"}`}>
               {item}
             </div>
           ))}
         </aside>
 
-        <div className="p-5 sm:p-7">
-          <div className="flex flex-col gap-4 border-b border-white/8 pb-5 sm:flex-row sm:items-center sm:justify-between">
-            <div className="flex items-center gap-5 text-sm font-medium">
+        <div className="bg-[#050706] p-6 sm:p-8">
+          <div className="flex flex-col gap-4 border-b border-white/12 pb-6 sm:flex-row sm:items-center sm:justify-between">
+            <div className="flex items-center gap-6 text-sm font-semibold">
               <span className="text-[#00d4a4]">Guide</span>
-              <span className="text-white/38">API Reference</span>
-              <span className="text-white/38">Changelog</span>
+              <span className="text-white/58">API Reference</span>
+              <span className="text-white/58">Changelog</span>
             </div>
-            <div className="flex items-center gap-2 rounded-md border border-white/8 bg-white/[0.03] px-3 py-2 text-xs text-white/40">
-              <Search className="h-3.5 w-3.5" />
+            <div className="flex items-center gap-2 rounded-lg border border-white/12 bg-white/[0.035] px-4 py-3 text-xs text-white/42">
+              <Search className="h-4 w-4" />
               Search or ask
             </div>
           </div>
 
-          <div className="mt-6">
+          <div className="mt-7">
             <p className="text-sm font-semibold text-white">Getting Started</p>
-            <h3 className="mt-2 text-2xl font-semibold text-white">Quickstart Guide</h3>
-            <p className="mt-2 max-w-xl text-sm leading-6 text-white/48">
+            <h3 className="mt-2 text-3xl font-semibold leading-tight text-white">Quickstart Guide</h3>
+            <p className="mt-3 max-w-2xl text-sm leading-6 text-white/62">
               Start building intelligent design systems with palette extraction, live previews, and AI-ready exports.
             </p>
           </div>
 
-          <div className="mt-6 grid gap-4 sm:grid-cols-2">
+          <div className="mt-8 grid gap-4 sm:grid-cols-2">
             {cards.map((card) => {
               const Icon = card.icon;
               return (
-                <div key={card.title} className="rounded-lg border border-[#00d4a4]/10 bg-[#052017]/70 p-5">
+                <div key={card.title} className="min-h-36 rounded-xl border border-[#00d4a4]/[0.14] bg-[linear-gradient(145deg,rgba(0,212,164,0.09),rgba(0,38,30,0.38)_46%,rgba(0,0,0,0.18))] p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]">
                   <Icon className="h-8 w-8 text-[#00d4a4]" />
-                  <p className="mt-5 font-semibold text-white">{card.title}</p>
-                  <p className="mt-2 text-sm leading-5 text-white/45">{card.copy}</p>
+                  <p className="mt-6 font-semibold text-white">{card.title}</p>
+                  <p className="mt-2 text-sm leading-5 text-white/48">{card.copy}</p>
                 </div>
               );
             })}
           </div>
         </div>
 
-        <aside className="hidden border-l border-white/8 p-5 lg:block">
-          <p className="text-xs font-semibold text-white/38">ON THIS PAGE</p>
+        <aside className="hidden border-l border-white/10 bg-[#040605] p-7 lg:block">
+          <p className="text-xs font-semibold text-white/68">ON THIS PAGE</p>
           {["Introduction", "Select vibe", "Generate palette", "Export files"].map((item, index) => (
-            <p key={item} className={`mt-3 text-sm ${index === 0 ? "text-[#7cebcb]" : "text-white/38"}`}>{item}</p>
+            <p key={item} className={`mt-4 text-sm ${index === 0 ? "text-[#7cebcb]" : "text-white/48"}`}>{item}</p>
           ))}
-          <div className="mt-8 rounded-lg border border-white/8 bg-white/[0.03] p-4">
+          <div className="mt-9 rounded-xl border border-white/[0.14] bg-white/[0.035] p-5">
             <p className="text-sm font-semibold text-white">Export status</p>
-            <div className="mt-4 space-y-3">
+            <div className="mt-5 space-y-4">
               {["DESIGN.md", "CSS variables", "Agent prompt"].map((item) => (
-                <div key={item} className="flex items-center justify-between text-sm text-white/48">
+                <div key={item} className="flex items-center justify-between text-sm text-white/68">
                   <span>{item}</span>
                   <Check className="h-4 w-4 text-[#00d4a4]" />
                 </div>
               ))}
             </div>
-            <button className="mt-5 w-full rounded-full bg-[#00d4a4] px-4 py-2 text-xs font-bold text-[#06100d]">Copy all</button>
+            <button className="mt-6 w-full rounded-full bg-[#00d4a4] px-4 py-3 text-xs font-bold text-[#06100d] transition hover:bg-[#64f4d2]">Copy all</button>
           </div>
         </aside>
       </div>
