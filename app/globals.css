@@ -48,9 +48,9 @@ pre {
 
 .hero-section {
   background:
-    radial-gradient(ellipse 56rem 28rem at 50% 28%, rgba(0, 212, 164, 0.16), transparent 74%),
-    radial-gradient(ellipse 52rem 30rem at 64% 32%, rgba(14, 165, 233, 0.16), transparent 76%),
-    linear-gradient(180deg, #020917 0%, #031527 22%, #063646 46%, #052f36 62%, #041514 80%, #050806 100%);
+    radial-gradient(ellipse 64rem 34rem at 50% 34%, rgba(0, 212, 164, 0.18), transparent 76%),
+    radial-gradient(ellipse 58rem 34rem at 64% 38%, rgba(14, 165, 233, 0.16), transparent 78%),
+    linear-gradient(180deg, #020917 0%, #031527 18%, #063646 42%, #064c4a 62%, #06362f 80%, #041514 94%, #050806 100%);
 }
 
 .studio-scroll {
@@ -116,10 +116,10 @@ pre {
   pointer-events: none;
   overflow: hidden;
   background:
-    radial-gradient(ellipse 44rem 30rem at 50% 36%, rgba(0, 212, 164, 0.2), rgba(0, 125, 111, 0.1) 44%, transparent 76%),
-    radial-gradient(ellipse 48rem 28rem at 63% 38%, rgba(14, 165, 233, 0.2), transparent 78%),
-    radial-gradient(ellipse 40rem 24rem at 28% 38%, rgba(22, 78, 99, 0.34), transparent 78%),
-    linear-gradient(180deg, transparent 0%, rgba(5, 47, 54, 0.62) 45%, rgba(4, 21, 20, 0.7) 72%, #050806 100%);
+    radial-gradient(ellipse 48rem 34rem at 50% 42%, rgba(0, 212, 164, 0.2), rgba(0, 125, 111, 0.11) 46%, transparent 78%),
+    radial-gradient(ellipse 52rem 32rem at 63% 44%, rgba(14, 165, 233, 0.2), transparent 80%),
+    radial-gradient(ellipse 44rem 28rem at 28% 46%, rgba(22, 78, 99, 0.34), transparent 80%),
+    linear-gradient(180deg, transparent 0%, rgba(5, 47, 54, 0.5) 44%, rgba(6, 76, 74, 0.42) 64%, rgba(4, 21, 20, 0.34) 88%, #050806 100%);
   opacity: 1;
 }
 
@@ -145,10 +145,10 @@ pre {
 
 .hero-pixel-field::after {
   background:
-    radial-gradient(ellipse 38rem 15rem at 4% 54%, rgba(26, 92, 126, 0.48), transparent 76%),
-    radial-gradient(ellipse 44rem 18rem at 96% 58%, rgba(0, 151, 143, 0.26), transparent 78%),
-    linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(2, 8, 11, 0.12) 54%, #050806 100%);
-  opacity: 0.9;
+    radial-gradient(ellipse 38rem 18rem at 4% 62%, rgba(26, 92, 126, 0.48), transparent 78%),
+    radial-gradient(ellipse 44rem 20rem at 96% 66%, rgba(0, 151, 143, 0.26), transparent 80%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(2, 8, 11, 0.06) 66%, rgba(2, 8, 11, 0.24) 90%, #050806 100%);
+  opacity: 0.78;
 }
 
 .aurora-ribbon {
