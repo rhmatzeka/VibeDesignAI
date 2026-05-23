@@ -69,27 +69,27 @@ export function LandingPage() {
   return (
     <main className="min-h-screen bg-[#050806] text-white">
       <section className="hero-section relative overflow-hidden border-b border-white/8">
-        <div className="hero-starfield opacity-35" />
+        <div className="hero-starfield" />
         <div className="hero-pixel-field" aria-hidden="true" />
         <div className="aurora-ribbon aurora-ribbon-one" />
         <div className="aurora-ribbon aurora-ribbon-two" />
 
         <LandingHeader />
 
-        <div className="relative z-10 mx-auto flex min-h-[980px] max-w-7xl flex-col items-center px-4 pb-24 pt-28 text-center sm:px-6 lg:min-h-[1010px] lg:px-8">
+        <div className="relative z-10 mx-auto flex min-h-[900px] max-w-7xl flex-col items-center px-4 pb-16 pt-24 text-center sm:px-6 lg:min-h-[930px] lg:px-8">
           <div className="inline-flex items-center gap-2 rounded-full border border-[#00d4a4]/25 bg-[#00d4a4]/10 px-3 py-1.5 text-xs font-semibold text-[#7cebcb]">
             <span className="rounded-full bg-[#00d4a4] px-1.5 py-0.5 text-[10px] font-bold text-[#06100d]">NEW</span>
             Workflow for vibe coding design systems
             <Sparkles className="h-3.5 w-3.5" />
           </div>
 
-          <h1 className="mt-8 max-w-4xl text-5xl font-semibold leading-[1.04] text-white sm:text-6xl lg:text-[68px]">
+          <h1 className="mt-7 max-w-4xl text-5xl font-semibold leading-[1.04] text-white sm:text-6xl lg:text-[68px]">
             The intelligent design system platform
           </h1>
-          <p className="mt-6 max-w-2xl text-base leading-7 text-white/68 sm:text-lg">
+          <p className="mt-5 max-w-2xl text-base leading-7 text-white/68 sm:text-lg">
             Helping builders create modern, consistent website direction for AI coding agents. Generate palettes, previews, DESIGN.md, Tailwind config, and production-ready prompts.
           </p>
-          <form action="/studio" className="mt-9 flex w-full max-w-xl items-center rounded-full border border-white/20 bg-white/12 p-1.5 text-left shadow-[0_24px_80px_rgba(0,0,0,0.24)] backdrop-blur-xl">
+          <form action="/studio" className="mt-8 flex w-full max-w-xl items-center rounded-full border border-white/20 bg-white/12 p-1.5 text-left shadow-[0_24px_80px_rgba(0,0,0,0.24)] backdrop-blur-xl">
             <input
               aria-label="Email address"
               name="email"
@@ -102,7 +102,7 @@ export function LandingPage() {
             </button>
           </form>
 
-          <div id="preview" className="mt-10 w-full max-w-[1120px] scroll-mt-24">
+          <div id="preview" className="mt-9 w-full max-w-[1120px] scroll-mt-24">
             <ProductMockup />
           </div>
 
@@ -344,7 +344,7 @@ function ProductMockup() {
   return (
     <div className="rounded-[2rem] border border-white/[0.22] bg-[#030605] p-2 shadow-[0_34px_110px_rgba(0,0,0,0.68),0_0_0_1px_rgba(0,212,164,0.08)]">
       <div className="grid min-h-[560px] overflow-hidden rounded-[1.55rem] border border-white/10 bg-[#050706] text-left lg:grid-cols-[260px_minmax(0,1fr)_230px]">
-        <aside className="hidden border-r border-white/10 bg-[#040605] p-7 lg:block">
+        <aside className="hidden border-r border-white/10 bg-[#040605] p-5 lg:block">
           <div className="mb-10 flex items-center gap-3">
             <span className="grid h-8 w-8 place-items-center rounded-full bg-[#00d4a4] text-[#06100d]">
               <Wand2 className="h-3.5 w-3.5" />
@@ -358,8 +358,8 @@ function ProductMockup() {
           ))}
         </aside>
 
-        <div className="bg-[#050706] p-6 sm:p-8">
-          <div className="flex flex-col gap-4 border-b border-white/12 pb-6 sm:flex-row sm:items-center sm:justify-between">
+        <div className="bg-[#050706] p-5 sm:p-6">
+          <div className="flex flex-col gap-4 border-b border-white/12 pb-5 sm:flex-row sm:items-center sm:justify-between">
             <div className="flex items-center gap-6 text-sm font-semibold">
               <span className="text-[#00d4a4]">Guide</span>
               <span className="text-white/58">API Reference</span>
@@ -371,7 +371,7 @@ function ProductMockup() {
             </div>
           </div>
 
-          <div className="mt-7">
+          <div className="mt-6">
             <p className="text-sm font-semibold text-white">Getting Started</p>
             <h3 className="mt-2 text-3xl font-semibold leading-tight text-white">Quickstart Guide</h3>
             <p className="mt-3 max-w-2xl text-sm leading-6 text-white/62">
@@ -393,7 +393,7 @@ function ProductMockup() {
           </div>
         </div>
 
-        <aside className="hidden border-l border-white/10 bg-[#040605] p-7 lg:block">
+        <aside className="hidden border-l border-white/10 bg-[#040605] p-5 lg:block">
           <p className="text-xs font-semibold text-white/68">ON THIS PAGE</p>
           {["Introduction", "Select vibe", "Generate palette", "Export files"].map((item, index) => (
             <p key={item} className={`mt-4 text-sm ${index === 0 ? "text-[#7cebcb]" : "text-white/48"}`}>{item}</p>
