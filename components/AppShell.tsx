@@ -82,8 +82,8 @@ export function AppShell() {
   }, [mixerVibes, state.mixer]);
 
   const designMd = useMemo(
-    () => generateDesignMd({ websiteType, vibe, palette: state.palette, mixer: state.mixer, mixedDescription }),
-    [websiteType, vibe, state.palette, state.mixer, mixedDescription]
+    () => generateDesignMd({ websiteType, vibe, palette: state.palette, mixedDescription }),
+    [websiteType, vibe, state.palette, mixedDescription]
   );
 
   const cssVariables = useMemo(() => generateCssVariables(state.palette), [state.palette]);

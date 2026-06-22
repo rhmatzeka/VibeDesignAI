@@ -26,6 +26,7 @@ export function ImagePaletteExtractor({
         </label>
         <div className="rounded-3xl border border-white/8 bg-white/[0.055] p-4">
           {previewUrl ? (
+            // eslint-disable-next-line @next/next/no-img-element -- Object URLs from local uploads are not supported by next/image optimization.
             <img src={previewUrl} alt="Uploaded inspiration" className="h-56 w-full rounded-2xl object-cover" />
           ) : (
             <div className="grid h-56 place-items-center rounded-2xl border border-white/8 bg-black/20 text-sm text-slate-400">Upload state preview will appear here.</div>

@@ -1,4 +1,4 @@
-import type { ColorPalette, MixerState, VibePreset, WebsiteType } from "./types";
+import type { ColorPalette, VibePreset, WebsiteType } from "./types";
 
 const labels: Record<keyof ColorPalette, string> = {
   primary: "Primary",
@@ -21,13 +21,11 @@ export function generateDesignMd({
   websiteType,
   vibe,
   palette,
-  mixer,
   mixedDescription
 }: {
   websiteType: WebsiteType;
   vibe: VibePreset;
   palette: ColorPalette;
-  mixer: MixerState;
   mixedDescription: string;
 }) {
   const colorLines = (Object.keys(palette) as Array<keyof ColorPalette>)
