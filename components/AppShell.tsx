@@ -169,7 +169,7 @@ export function AppShell() {
   };
 
   return (
-    <>
+    <div className="min-h-screen bg-[#0a0a0a] text-[#ffffff] font-sans antialiased">
       <Toast toasts={toasts} />
       <div className="mx-auto grid min-h-screen w-full max-w-[1800px] gap-5 p-4 lg:grid-cols-[260px_minmax(0,1fr)] 2xl:grid-cols-[260px_minmax(0,1fr)_470px]">
         <Sidebar />
@@ -225,6 +225,6 @@ export function AppShell() {
           </div>
         </aside>
       </div>
-    </>
+    </div>
   );
 }

@@ -26,7 +26,7 @@ export function ContrastChecker({
     <section id="contrast" className="scroll-mt-6">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
         <SectionTitle eyebrow="Contrast" title="Contrast Check" subtitle="Check key color pairs and auto-fix text colors for readable UI." />
-        <button onClick={onAutoFix} className="focus-ring mb-4 inline-flex items-center gap-2 rounded-2xl bg-gradient-to-r from-violet-500 via-blue-500 to-emerald-400 px-4 py-2.5 text-sm font-semibold text-white shadow-glow">
+        <button onClick={onAutoFix} className="focus-ring mb-4 inline-flex items-center gap-2 rounded-full bg-[#00d4a4] hover:bg-[#00b48a] px-5 py-2.5 text-xs font-semibold text-[#0a0a0a] transition">
           <Gauge className="h-4 w-4" />
           Auto Fix Contrast
         </button>
@@ -35,16 +35,16 @@ export function ContrastChecker({
         {checks.map(([label, foreground, background]) => {
           const ratio = getContrastRatio(foreground, background);
           const result = getContrastStatus(ratio);
-          const tone = result.status === "Good" ? "text-emerald-300 border-emerald-400/20 bg-emerald-400/8" : result.status === "Warning" ? "text-amber-200 border-amber-400/20 bg-amber-400/8" : "text-red-200 border-red-400/20 bg-red-400/8";
+          const tone = result.status === "Good" ? "text-[#00d4a4] border-[#00d4a4]/20 bg-[#00d4a4]/8" : result.status === "Warning" ? "text-[#c37d0d] border-[#c37d0d]/20 bg-[#c37d0d]/8" : "text-[#d45656] border-[#d45656]/20 bg-[#d45656]/8";
           return (
-            <div key={label} className="rounded-2xl border border-white/8 bg-white/[0.055] p-4">
+            <div key={label} className="rounded-lg border border-[#1f1f1f] bg-[#0c0c0e] p-4">
               <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                 <div>
                   <p className="font-semibold text-white">{label}</p>
-                  <p className="mt-1 text-sm text-slate-400">{result.message}</p>
+                  <p className="mt-1 text-xs text-[#888888]">{result.message}</p>
                 </div>
                 <div className="flex items-center gap-3">
-                  <div className="flex overflow-hidden rounded-full border border-white/10">
+                  <div className="flex overflow-hidden rounded-md border border-[#1f1f1f]">
                     <span className="h-8 w-10" style={{ backgroundColor: foreground }} />
                     <span className="h-8 w-10" style={{ backgroundColor: background }} />
                   </div>

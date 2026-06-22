@@ -12,3 +12,5 @@ bun.lockb
 bun.lock
 tsconfig.tsbuildinfo
 .DS_Store
+dev.log
+*.log

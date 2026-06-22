@@ -19,19 +19,19 @@ export function LivePreview({
   return (
     <section id="preview" className="scroll-mt-6">
       <SectionTitle eyebrow="Preview" title="Live UI preview" subtitle="Every preview uses the active palette, so color changes are visible immediately." />
-      <div className="rounded-3xl border border-white/8 bg-white/[0.055] p-3">
-        <div className="studio-scroll mb-3 flex gap-2 overflow-x-auto">
+      <div className="rounded-lg border border-[#1f1f1f] bg-[#0c0c0e] p-3">
+        <div className="studio-scroll mb-3 flex gap-2 overflow-x-auto pb-1">
           {tabs.map((tab) => (
             <button
               key={tab}
               onClick={() => onTabChange(tab)}
-              className={`focus-ring shrink-0 rounded-2xl px-3 py-2 text-xs font-semibold transition ${selectedTab === tab ? "bg-white text-slate-950" : "border border-white/10 bg-white/5 text-slate-300 hover:bg-white/10"}`}
+              className={`focus-ring shrink-0 rounded-full px-3 py-1.5 text-xs font-semibold transition ${selectedTab === tab ? "bg-[#00d4a4] text-[#0a0a0a]" : "border border-[#1f1f1f] bg-[#0c0c0e] text-[#a8a8aa] hover:bg-[#1c1c1e] hover:text-white"}`}
             >
               {tab}
             </button>
           ))}
         </div>
-        <div className="overflow-hidden rounded-3xl border" style={{ backgroundColor: palette.background, borderColor: palette.border, color: palette.textPrimary }}>
+        <div className="overflow-hidden rounded-md border" style={{ backgroundColor: palette.background, borderColor: palette.border, color: palette.textPrimary }}>
           <AnimatePresence mode="wait">
             <motion.div key={selectedTab} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} transition={{ duration: 0.18 }}>
               {selectedTab === "Landing Page" && <Landing palette={palette} />}

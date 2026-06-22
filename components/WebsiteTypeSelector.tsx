@@ -23,15 +23,17 @@ export function WebsiteTypeSelector({
               key={type.id}
               whileHover={{ y: -2 }}
               onClick={() => onSelect(type.id)}
-              className={`focus-ring rounded-2xl border p-4 text-left transition ${
-                selected ? "border-cyan-300/70 bg-cyan-300/12 shadow-glow" : "border-white/8 bg-white/[0.055] hover:border-white/18 hover:bg-white/[0.08]"
+              className={`focus-ring rounded-lg border p-4 text-left transition ${
+                selected
+                  ? "border-[#00d4a4] bg-[#0c0c0e] shadow-[rgba(0,212,164,0.08)_0px_8px_24px]"
+                  : "border-[#1f1f1f] bg-[#0c0c0e] hover:border-[#3a3a3c] hover:bg-[#111115]"
               }`}
             >
               <p className="font-semibold text-white">{type.name}</p>
-              <p className="mt-2 text-sm leading-6 text-slate-400">{type.description}</p>
+              <p className="mt-2 text-xs leading-5 text-[#a8a8aa]">{type.description}</p>
               <div className="mt-3 flex flex-wrap gap-1.5">
                 {type.mood.slice(0, 4).map((mood) => (
-                  <span key={mood} className="rounded-full border border-white/10 bg-white/5 px-2 py-1 text-[11px] text-slate-300">{mood}</span>
+                  <span key={mood} className="rounded border border-[#1f1f1f] bg-[#1c1c1e] px-2 py-0.5 font-mono text-[10px] text-[#a8a8aa]">{mood}</span>
                 ))}
               </div>
             </motion.button>
@@ -45,9 +47,9 @@ export function WebsiteTypeSelector({
 export function SectionTitle({ eyebrow, title, subtitle }: { eyebrow: string; title: string; subtitle: string }) {
   return (
     <div className="mb-4">
-      <p className="text-xs font-semibold uppercase tracking-[0.22em] text-cyan-300">{eyebrow}</p>
+      <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#00d4a4]">{eyebrow}</p>
       <h2 className="mt-1 text-2xl font-semibold tracking-tight text-white">{title}</h2>
-      <p className="mt-2 max-w-3xl text-sm leading-6 text-slate-400">{subtitle}</p>
+      <p className="mt-2 max-w-3xl text-xs leading-5 text-[#888888]">{subtitle}</p>
     </div>
   );
 }
