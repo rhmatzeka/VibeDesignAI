@@ -191,7 +191,7 @@ export function AppShell() {
             <ImagePaletteExtractor previewUrl={previewUrl} extractedColors={extractedColors} onUpload={uploadImage} onApplyColor={applyBaseColor} />
             <VibeMixer vibes={vibePresets} mixer={state.mixer} mixedDescription={mixedDescription} onChange={(mixer) => setState((current) => ({ ...current, mixer }))} onApply={applyMixedPalette} />
             <div className="2xl:hidden">
-              <LivePreview palette={state.palette} selectedTab={state.previewTab} onTabChange={(previewTab: PreviewTab) => setState((current) => ({ ...current, previewTab }))} />
+              <LivePreview palette={state.palette} vibe={vibe} websiteType={websiteType} selectedTab={state.previewTab} onTabChange={(previewTab: PreviewTab) => setState((current) => ({ ...current, previewTab }))} />
             </div>
             <DesignMdOutput designMd={designMd} onCopy={() => copy(designMd)} />
             <ExportCenter
@@ -217,7 +217,7 @@ export function AppShell() {
         </main>
         <aside className="hidden min-w-0 space-y-5 2xl:block">
           <div className="sticky top-4 space-y-5">
-            <LivePreview palette={state.palette} selectedTab={state.previewTab} onTabChange={(previewTab: PreviewTab) => setState((current) => ({ ...current, previewTab }))} />
+            <LivePreview palette={state.palette} vibe={vibe} websiteType={websiteType} selectedTab={state.previewTab} onTabChange={(previewTab: PreviewTab) => setState((current) => ({ ...current, previewTab }))} />
             <ContrastChecker palette={state.palette} onAutoFix={() => {
               setState((current) => ({ ...current, palette: autoFixTextColor(current.palette) }));
               pushToast("Text contrast fixed.");
