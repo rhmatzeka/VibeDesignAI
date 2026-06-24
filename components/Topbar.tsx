@@ -6,11 +6,15 @@ import { motion } from "framer-motion";
 export function Topbar({
   onRandom,
   onSave,
-  onReset
+  onReset,
+  adminMode,
+  onToggleAdmin
 }: {
   onRandom: () => void;
   onSave: () => void;
   onReset: () => void;
+  adminMode: boolean;
+  onToggleAdmin: () => void;
 }) {
   return (
     <header className="sticky top-4 z-30 mb-5 rounded-lg border border-[#1f1f1f] bg-[#0c0c0e] px-4 py-3">
@@ -30,6 +34,13 @@ export function Topbar({
           <TopButton icon={<Shuffle className="h-4 w-4" />} label="Random Vibe" onClick={onRandom} variant="secondary" />
           <TopButton icon={<Save className="h-4 w-4" />} label="Save" onClick={onSave} variant="primary" />
           <TopButton icon={<RotateCcw className="h-4 w-4" />} label="Reset" onClick={onReset} variant="ghost" />
+          <div className="h-6 w-[1px] bg-[#1f1f1f] self-center mx-1 hidden sm:block" />
+          <TopButton 
+            icon={<span className="h-2 w-2 rounded-full" style={{ backgroundColor: adminMode ? "#00d4a4" : "rgba(255,255,255,0.3)" }} />} 
+            label={adminMode ? "Admin Active" : "Admin Mode"} 
+            onClick={onToggleAdmin} 
+            variant={adminMode ? "primary" : "secondary"} 
+          />
         </div>
       </div>
     </header>

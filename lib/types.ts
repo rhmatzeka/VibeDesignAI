@@ -27,6 +27,7 @@ export type VibePreset = {
   visualEffects: string;
   bestFor: string[];
   avoid: string;
+  previewThemeId?: string;
 };
 
 export type WebsiteType = {

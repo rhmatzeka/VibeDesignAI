@@ -20,7 +20,7 @@ export function LivePreview({
   selectedTab: PreviewTab;
   onTabChange: (tab: PreviewTab) => void;
 }) {
-  const theme = getPreviewTheme(vibe.id);
+  const theme = getPreviewTheme(vibe);
   const Preview = theme.render[selectedTab];
 
   return (

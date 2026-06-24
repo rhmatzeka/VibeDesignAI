@@ -15,14 +15,15 @@ import { ContrastChecker } from "./ContrastChecker";
 import { Toast } from "./Toast";
 import { websiteTypes } from "@/lib/website-types";
 import { defaultVibe, vibePresets } from "@/lib/vibe-presets";
-import type { ColorPalette, DesignState, MixerState, PreviewTab, PromptMode, ToastMessage } from "@/lib/types";
+import type { ColorPalette, DesignState, MixerState, PreviewTab, PromptMode, ToastMessage, VibePreset } from "@/lib/types";
 import { autoFixTextColor } from "@/lib/contrast-utils";
 import { generateAgentPrompt } from "@/lib/agent-prompt-generator";
 import { generateDesignMd } from "@/lib/design-md-generator";
 import { copyToClipboard, downloadTextFile, generateCssVariables, generateJsonTokens, generateTailwindConfig } from "@/lib/export-utils";
 import { extractColorsFromImage } from "@/lib/image-color-utils";
 import { buildMixedPalette, generatePaletteFromBaseColor, generatePaletteFromVibe, normalizeHex, randomizeVibe, validateHex } from "@/lib/palette-utils";
-import { clearDesignState, loadDesignState, saveDesignState } from "@/lib/storage-utils";
+import { clearDesignState, loadDesignState, saveDesignState, loadCustomVibes, saveCustomVibes, clearCustomVibes } from "@/lib/storage-utils";
+import { AdminPanel } from "./AdminPanel";
 
 const defaultMixer: MixerState = {
   primaryVibeId: "dark-premium",
@@ -48,10 +49,16 @@ export function AppShell() {
   const [toasts, setToasts] = useState<ToastMessage[]>([]);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
   const [extractedColors, setExtractedColors] = useState<string[]>([]);
+  const [customVibes, setCustomVibes] = useState<VibePreset[]>([]);
+  const [adminMode, setAdminMode] = useState(false);
 
   useEffect(() => {
     const saved = loadDesignState();
     if (saved) setState({ ...defaultState, ...saved });
+    
+    const savedCustom = loadCustomVibes();
+    setCustomVibes(savedCustom);
+    
     setHydrated(true);
   }, []);
 
@@ -59,22 +66,24 @@ export function AppShell() {
     if (hydrated) saveDesignState(state);
   }, [hydrated, state]);
 
+  const allVibes = useMemo(() => [...vibePresets, ...customVibes], [customVibes]);
+
   const websiteType = useMemo(
     () => websiteTypes.find((item) => item.id === state.websiteTypeId) ?? websiteTypes[0],
     [state.websiteTypeId]
   );
 
   const vibe = useMemo(
-    () => vibePresets.find((item) => item.id === state.vibeId) ?? defaultVibe,
-    [state.vibeId]
+    () => allVibes.find((item) => item.id === state.vibeId) ?? defaultVibe,
+    [state.vibeId, allVibes]
   );
 
   const mixerVibes = useMemo(() => {
-    const primary = vibePresets.find((item) => item.id === state.mixer.primaryVibeId) ?? defaultVibe;
-    const secondary = vibePresets.find((item) => item.id === state.mixer.secondaryVibeId) ?? vibePresets[0];
-    const tertiary = vibePresets.find((item) => item.id === state.mixer.tertiaryVibeId) ?? vibePresets[1];
+    const primary = allVibes.find((item) => item.id === state.mixer.primaryVibeId) ?? defaultVibe;
+    const secondary = allVibes.find((item) => item.id === state.mixer.secondaryVibeId) ?? allVibes[0];
+    const tertiary = allVibes.find((item) => item.id === state.mixer.tertiaryVibeId) ?? allVibes[1];
     return { primary, secondary, tertiary };
-  }, [state.mixer]);
+  }, [state.mixer, allVibes]);
 
   const mixedDescription = useMemo(() => {
     const moods = [...new Set([...mixerVibes.primary.mood, ...mixerVibes.secondary.mood.slice(0, 2), ...mixerVibes.tertiary.mood.slice(0, 2)])].slice(0, 7);
@@ -104,6 +113,8 @@ export function AppShell() {
 
   const resetAll = useCallback(() => {
     clearDesignState();
+    clearCustomVibes();
+    setCustomVibes([]);
     setState(defaultState);
     setExtractedColors([]);
     if (previewUrl) URL.revokeObjectURL(previewUrl);
@@ -121,8 +132,24 @@ export function AppShell() {
   }, [pushToast]);
 
   const selectVibe = (id: string) => {
-    const next = vibePresets.find((item) => item.id === id) ?? defaultVibe;
+    const next = allVibes.find((item) => item.id === id) ?? defaultVibe;
     setState((current) => ({ ...current, vibeId: id, palette: generatePaletteFromVibe(next), mixer: { ...current.mixer, primaryVibeId: id } }));
+  };
+
+  const addCustomVibe = (newVibe: VibePreset) => {
+    const updated = [...customVibes, newVibe];
+    setCustomVibes(updated);
+    saveCustomVibes(updated);
+    setState((current) => ({
+      ...current,
+      vibeId: newVibe.id,
+      palette: newVibe.colors,
+      mixer: {
+        ...current.mixer,
+        primaryVibeId: newVibe.id
+      }
+    }));
+    pushToast(`Theme "${newVibe.name}" created and loaded.`);
   };
 
   const randomVibe = () => {
@@ -174,10 +201,11 @@ export function AppShell() {
       <div className="mx-auto grid min-h-screen w-full max-w-[1800px] gap-5 p-4 lg:grid-cols-[260px_minmax(0,1fr)] 2xl:grid-cols-[260px_minmax(0,1fr)_470px]">
         <Sidebar />
         <main className="min-w-0">
-          <Topbar onRandom={randomVibe} onSave={saveNow} onReset={resetAll} />
+          <Topbar onRandom={randomVibe} onSave={saveNow} onReset={resetAll} adminMode={adminMode} onToggleAdmin={() => setAdminMode(!adminMode)} />
           <div className="space-y-8">
+            {adminMode && <AdminPanel onAddVibe={addCustomVibe} />}
             <WebsiteTypeSelector websiteTypes={websiteTypes} selectedId={state.websiteTypeId} onSelect={(websiteTypeId) => setState((current) => ({ ...current, websiteTypeId }))} />
-            <VibeSelector vibes={vibePresets} selectedId={state.vibeId} onSelect={selectVibe} onGenerate={() => pushToast("Design system generated.")} />
+            <VibeSelector vibes={allVibes} selectedId={state.vibeId} onSelect={selectVibe} onGenerate={() => pushToast("Design system generated.")} />
             <PaletteEditor
               palette={state.palette}
               originalPalette={vibe.colors}
@@ -189,7 +217,7 @@ export function AppShell() {
               onCopyAll={() => copy(jsonTokens)}
             />
             <ImagePaletteExtractor previewUrl={previewUrl} extractedColors={extractedColors} onUpload={uploadImage} onApplyColor={applyBaseColor} />
-            <VibeMixer vibes={vibePresets} mixer={state.mixer} mixedDescription={mixedDescription} onChange={(mixer) => setState((current) => ({ ...current, mixer }))} onApply={applyMixedPalette} />
+            <VibeMixer vibes={allVibes} mixer={state.mixer} mixedDescription={mixedDescription} onChange={(mixer) => setState((current) => ({ ...current, mixer }))} onApply={applyMixedPalette} />
             <div className="2xl:hidden">
               <LivePreview palette={state.palette} vibe={vibe} websiteType={websiteType} selectedTab={state.previewTab} onTabChange={(previewTab: PreviewTab) => setState((current) => ({ ...current, previewTab }))} />
             </div>

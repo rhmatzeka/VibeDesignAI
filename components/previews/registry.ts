@@ -15,8 +15,13 @@ const themes: ThemePreview[] = [
   commerceWarmTheme
 ];
 
-export function getPreviewTheme(vibeId: string) {
-  return themes.find((theme) => theme.vibeIds.includes(vibeId)) ?? framerDarkTheme;
+import type { VibePreset } from "@/lib/types";
+
+export function getPreviewTheme(vibe: VibePreset) {
+  if (vibe.previewThemeId) {
+    return themes.find((theme) => theme.id === vibe.previewThemeId) ?? framerDarkTheme;
+  }
+  return themes.find((theme) => theme.vibeIds.includes(vibe.id)) ?? framerDarkTheme;
 }
 
 export const previewThemes = themes;
