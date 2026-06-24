@@ -1,19 +1,23 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { Trash2 } from "lucide-react";
 import type { VibePreset } from "@/lib/types";
+import { vibePresets } from "@/lib/vibe-presets";
 import { SectionTitle } from "./WebsiteTypeSelector";
 
 export function VibeSelector({
   vibes,
   selectedId,
   onSelect,
-  onGenerate
+  onGenerate,
+  onDeleteVibe
 }: {
   vibes: VibePreset[];
   selectedId: string;
   onSelect: (id: string) => void;
   onGenerate: () => void;
+  onDeleteVibe?: (id: string) => void;
 }) {
   return (
     <section className="scroll-mt-6">
@@ -42,17 +46,36 @@ export function VibeSelector({
                   : "border-[#1f1f1f] bg-[#0c0c0e] hover:border-[#3a3a3c] hover:bg-[#111115]"
               }`}
             >
-              <div className="flex items-start justify-between gap-3">
-                <div>
-                  <p className="font-semibold text-white">{vibe.name}</p>
-                  <p className="mt-2 text-xs leading-5 text-[#a8a8aa]">{vibe.description}</p>
-                </div>
-                <div className="flex shrink-0 -space-x-2">
-                  {[vibe.colors.primary, vibe.colors.secondary, vibe.colors.accent].map((color) => (
-                    <span key={color} className="h-6 w-6 rounded-full border border-[#1f1f1f]" style={{ backgroundColor: color }} />
-                  ))}
-                </div>
-              </div>
+              {(() => {
+                const isCustom = !vibePresets.some((p) => p.id === vibe.id);
+                return (
+                  <div className="flex items-start justify-between gap-3">
+                    <div>
+                      <p className="font-semibold text-white">{vibe.name}</p>
+                      <p className="mt-2 text-xs leading-5 text-[#a8a8aa]">{vibe.description}</p>
+                    </div>
+                    <div className="flex flex-col items-end gap-2 shrink-0">
+                      <div className="flex -space-x-2">
+                        {[vibe.colors.primary, vibe.colors.secondary, vibe.colors.accent].map((color) => (
+                          <span key={color} className="h-6 w-6 rounded-full border border-[#1f1f1f]" style={{ backgroundColor: color }} />
+                        ))}
+                      </div>
+                      {isCustom && onDeleteVibe && (
+                        <button
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            onDeleteVibe(vibe.id);
+                          }}
+                          className="rounded p-1 text-[#a8a8aa] hover:bg-[#1c1c1e] hover:text-[#d45656] transition"
+                          title="Delete custom theme"
+                        >
+                          <Trash2 className="h-3.5 w-3.5" />
+                        </button>
+                      )}
+                    </div>
+                  </div>
+                );
+              })()}
               <div className="mt-3 flex flex-wrap gap-1.5">
                 {vibe.mood.slice(0, 4).map((mood) => (
                   <span key={mood} className="rounded border border-[#1f1f1f] bg-[#1c1c1e] px-2 py-0.5 font-mono text-[10px] text-[#a8a8aa]">{mood}</span>

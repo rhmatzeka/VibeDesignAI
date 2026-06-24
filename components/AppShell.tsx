@@ -152,6 +152,24 @@ export function AppShell() {
     pushToast(`Theme "${newVibe.name}" created and loaded.`);
   };
 
+  const deleteCustomVibe = (id: string) => {
+    const updated = customVibes.filter((v) => v.id !== id);
+    setCustomVibes(updated);
+    saveCustomVibes(updated);
+    if (state.vibeId === id) {
+      setState((current) => ({
+        ...current,
+        vibeId: "dark-premium",
+        palette: generatePaletteFromVibe(defaultVibe),
+        mixer: {
+          ...current.mixer,
+          primaryVibeId: "dark-premium"
+        }
+      }));
+    }
+    pushToast("Custom theme deleted.");
+  };
+
   const randomVibe = () => {
     const next = randomizeVibe(state.vibeId);
     setState((current) => ({ ...current, vibeId: next.id, palette: generatePaletteFromVibe(next), mixer: { ...current.mixer, primaryVibeId: next.id } }));
@@ -205,7 +223,7 @@ export function AppShell() {
           <div className="space-y-8">
             {adminMode && <AdminPanel onAddVibe={addCustomVibe} />}
             <WebsiteTypeSelector websiteTypes={websiteTypes} selectedId={state.websiteTypeId} onSelect={(websiteTypeId) => setState((current) => ({ ...current, websiteTypeId }))} />
-            <VibeSelector vibes={allVibes} selectedId={state.vibeId} onSelect={selectVibe} onGenerate={() => pushToast("Design system generated.")} />
+            <VibeSelector vibes={allVibes} selectedId={state.vibeId} onSelect={selectVibe} onGenerate={() => pushToast("Design system generated.")} onDeleteVibe={deleteCustomVibe} />
             <PaletteEditor
               palette={state.palette}
               originalPalette={vibe.colors}
