@@ -105,7 +105,23 @@ ${colorRows}
 
 ---
 
-## 6. Code & Export Tokens
+## 6. Theme Renderer Guidance
+
+Do not reuse a generic SaaS layout for every visual direction. Treat this design as a theme-specific renderer:
+
+| Theme Signal | Implementation Requirement |
+| :--- | :--- |
+| **Apple / Minimal / Wellness** | Use gallery-first sections, oversized whitespace, soft product tiles, minimal chrome, and restrained shadows. |
+| **Framer / Cyberpunk / Gaming / Dark Anime** | Use dark artboard layouts, poster-scale typography, glowing gradient feature tiles, and high-energy dashboard surfaces. |
+| **Luxury / Editorial** | Use editorial spacing, serif-style display type, thin dividers, restrained gold/accent usage, and image-led storytelling. |
+| **Coffee / UMKM / Marketplace / Education** | Use warm conversion flows, product/menu cards, practical trust cues, and friendly rounded commerce surfaces. |
+| **Developer / Docs / Vercel-like** | Use dense documentation rhythm, monospace technical surfaces, sharp dividers, and precise active states. |
+
+When building previews or pages, vary the composition, card shape, typography, navigation behavior, and content modules according to the selected vibe and website category. Changing only colors is not enough.
+
+---
+
+## 7. Code & Export Tokens
 
 ### CSS Variables
 \`\`\`css
@@ -137,17 +153,19 @@ theme: {
 
 ---
 
-## 7. Do's and Don'ts
+## 8. Do's and Don'ts
 
 ### ✅ Do:
 - Maintain clear visual contrast ratios between text and background.
 - Follow the color token tables exactly.
 - Keep components responsive and mobile-friendly.
+- Make each theme feel structurally different: page rhythm, card silhouette, navbar style, and preview modules must change with the vibe.
 
 ### ❌ Don't:
 - Do not introduce random hex codes outside this specification.
 - Do not mix unrelated visual guidelines in the same view.
 - Do not use low-contrast text on primary buttons or headers.
+- Do not ship a generic template where every vibe has identical layout with only color changes.
 `;
 }
 
