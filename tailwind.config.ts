@@ -19,6 +19,20 @@ const config: Config = {
         soft: "0 24px 80px rgba(0,0,0,0.32)",
         glow: "0 0 42px rgba(124,58,237,0.28)"
       },
+      animation: {
+        marquee: "marquee 35s linear infinite",
+        "marquee-reverse": "marquee-reverse 35s linear infinite"
+      },
+      keyframes: {
+        marquee: {
+          "0%": { transform: "translateX(0%)" },
+          "100%": { transform: "translateX(-50%)" }
+        },
+        "marquee-reverse": {
+          "0%": { transform: "translateX(-50%)" },
+          "100%": { transform: "translateX(0%)" }
+        }
+      },
       opacity: {
         "8": "0.08",
         "12": "0.12",

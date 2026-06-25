@@ -316,15 +316,41 @@ export function LandingPage() {
 }
 
 function LogoWall() {
-  const logos = ["Cursor", "Windsurf", "Bolt", "Lovable", "Replit", "v0", "Claude Code", "Bolt.new"];
+  const row1 = ["Cursor", "Windsurf", "Bolt", "Lovable", "Replit", "v0", "Claude Code", "Bolt.new"];
+  const row2 = ["Next.js", "React", "Tailwind CSS", "TypeScript", "Framer Motion", "Supabase", "Figma", "ESLint"];
+
+  // Double the arrays for seamless infinite loop scroll
+  const items1 = [...row1, ...row1];
+  const items2 = [...row2, ...row2];
 
   return (
-    <div className="mt-20 w-full max-w-5xl">
-      <div className="grid grid-cols-2 gap-6 text-sm font-semibold text-white/58 sm:grid-cols-4">
-        {logos.map((logo) => (
-          <div key={logo} className="flex items-center justify-center gap-2">
+    <div className="mt-20 w-full max-w-5xl overflow-hidden relative select-none">
+      {/* Edge Fading Mask */}
+      <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-[#050806] to-transparent z-10 pointer-events-none" />
+      <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-[#050806] to-transparent z-10 pointer-events-none" />
+
+      {/* Row 1: Right to Left */}
+      <div className="flex w-max gap-4 animate-marquee mb-4">
+        {items1.map((logo, index) => (
+          <div
+            key={`row1-${logo}-${index}`}
+            className="flex items-center gap-2.5 rounded-full border border-white/8 bg-white/[0.03] px-6 py-2.5 text-sm font-semibold text-white/80 backdrop-blur-md shrink-0"
+          >
             <span className="h-2 w-2 rounded-full bg-[#00d4a4]" />
             {logo}
+          </div>
+        ))}
+      </div>
+
+      {/* Row 2: Left to Right */}
+      <div className="flex w-max gap-4 animate-marquee-reverse">
+        {items2.map((tech, index) => (
+          <div
+            key={`row2-${tech}-${index}`}
+            className="flex items-center gap-2.5 rounded-full border border-white/8 bg-white/[0.03] px-6 py-2.5 text-sm font-semibold text-white/80 backdrop-blur-md shrink-0"
+          >
+            <span className="h-2 w-2 rounded-full bg-violet-400" />
+            {tech}
           </div>
         ))}
       </div>
