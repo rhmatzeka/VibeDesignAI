@@ -24,6 +24,7 @@ import { extractColorsFromImage } from "@/lib/image-color-utils";
 import { buildMixedPalette, generatePaletteFromBaseColor, generatePaletteFromVibe, normalizeHex, randomizeVibe, validateHex } from "@/lib/palette-utils";
 import { clearDesignState, loadDesignState, saveDesignState, loadCustomVibes, saveCustomVibes, clearCustomVibes } from "@/lib/storage-utils";
 import { AdminPanel } from "./AdminPanel";
+import { AdminLoginModal } from "./AdminLoginModal";
 
 const defaultMixer: MixerState = {
   primaryVibeId: "dark-premium",
@@ -51,6 +52,7 @@ export function AppShell() {
   const [extractedColors, setExtractedColors] = useState<string[]>([]);
   const [customVibes, setCustomVibes] = useState<VibePreset[]>([]);
   const [adminMode, setAdminMode] = useState(false);
+  const [isLoginOpen, setIsLoginOpen] = useState(false);
 
   useEffect(() => {
     const saved = loadDesignState();
@@ -58,6 +60,10 @@ export function AppShell() {
     
     const savedCustom = loadCustomVibes();
     setCustomVibes(savedCustom);
+
+    if (typeof window !== "undefined" && sessionStorage.getItem("admin_logged_in") === "true") {
+      setAdminMode(true);
+    }
     
     setHydrated(true);
   }, []);
@@ -170,6 +176,23 @@ export function AppShell() {
     pushToast("Custom theme deleted.");
   };
 
+  const handleLoginSuccess = () => {
+    setAdminMode(true);
+    setIsLoginOpen(false);
+    if (typeof window !== "undefined") {
+      sessionStorage.setItem("admin_logged_in", "true");
+    }
+    pushToast("Admin workspace unlocked.");
+  };
+
+  const handleLockAdmin = () => {
+    setAdminMode(false);
+    if (typeof window !== "undefined") {
+      sessionStorage.removeItem("admin_logged_in");
+    }
+    pushToast("Admin workspace locked.");
+  };
+
   const randomVibe = () => {
     const next = randomizeVibe(state.vibeId);
     setState((current) => ({ ...current, vibeId: next.id, palette: generatePaletteFromVibe(next), mixer: { ...current.mixer, primaryVibeId: next.id } }));
@@ -216,10 +239,11 @@ export function AppShell() {
   return (
     <div className="min-h-screen bg-[#0a0a0a] text-[#ffffff] font-sans antialiased">
       <Toast toasts={toasts} />
+      <AdminLoginModal isOpen={isLoginOpen} onClose={() => setIsLoginOpen(false)} onSuccess={handleLoginSuccess} />
       <div className="mx-auto grid min-h-screen w-full max-w-[1800px] gap-5 p-4 lg:grid-cols-[260px_minmax(0,1fr)] 2xl:grid-cols-[260px_minmax(0,1fr)_470px]">
         <Sidebar />
         <main className="min-w-0">
-          <Topbar onRandom={randomVibe} onSave={saveNow} onReset={resetAll} adminMode={adminMode} onToggleAdmin={() => setAdminMode(!adminMode)} />
+          <Topbar onRandom={randomVibe} onSave={saveNow} onReset={resetAll} adminMode={adminMode} onToggleAdmin={handleLockAdmin} onTitleDoubleClick={() => setIsLoginOpen(true)} />
           <div className="space-y-8">
             {adminMode && <AdminPanel onAddVibe={addCustomVibe} />}
             <WebsiteTypeSelector websiteTypes={websiteTypes} selectedId={state.websiteTypeId} onSelect={(websiteTypeId) => setState((current) => ({ ...current, websiteTypeId }))} />
