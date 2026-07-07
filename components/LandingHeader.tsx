@@ -1,8 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight, Wand2 } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { useEffect, useState } from "react";
+import { VibeDesignLogo } from "./VibeDesignLogo";
 
 const quickLinks = ["Resources", "Documentation", "Customers", "Blog", "Pricing"];
 
@@ -27,11 +28,12 @@ export function LandingHeader() {
   return (
     <header className={`fixed inset-x-0 top-0 z-50 border-b transition-colors duration-200 ${scrolled ? "border-white/10 bg-[#050806]" : "border-transparent bg-transparent"}`}>
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        <Link href="/" className="flex items-center gap-2">
-          <span className="grid h-8 w-8 place-items-center rounded-full bg-[#00d4a4] text-[#06100d] shadow-[0_0_28px_rgba(0,212,164,0.36)]">
-            <Wand2 className="h-4 w-4" />
+        <Link href="/" className="group flex items-center gap-3" aria-label="VibeDesign AI home">
+          <VibeDesignLogo className="h-10 w-10 transition duration-300 group-hover:scale-105" />
+          <span className="leading-none">
+            <span className="block text-base font-semibold tracking-[-0.02em] text-white">VibeDesign</span>
+            <span className="mt-0.5 block text-[10px] font-bold uppercase tracking-[0.24em] text-[#7cebcb]">AI Studio</span>
           </span>
-          <span className="text-sm font-semibold text-white">VibeDesign AI</span>
         </Link>
 
         <nav className="hidden items-center gap-7 text-xs font-medium text-white/70 lg:flex">

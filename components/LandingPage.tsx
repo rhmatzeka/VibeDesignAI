@@ -19,6 +19,7 @@ import {
   Zap
 } from "lucide-react";
 import { LandingHeader } from "./LandingHeader";
+import { VibeDesignLogo } from "./VibeDesignLogo";
 
 const featureCards = [
   {
@@ -292,11 +293,12 @@ export function LandingPage() {
       <footer className="border-t border-white/8 bg-[#050806] px-4 py-14 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-6xl">
           <div className="flex flex-col gap-6 border-b border-white/8 pb-10 md:flex-row md:items-center md:justify-between">
-            <Link href="/" className="flex items-center gap-2">
-              <span className="grid h-8 w-8 place-items-center rounded-full bg-[#00d4a4] text-[#06100d]">
-                <Wand2 className="h-4 w-4" />
+            <Link href="/" className="flex items-center gap-3" aria-label="VibeDesign AI home">
+              <VibeDesignLogo className="h-10 w-10" />
+              <span>
+                <span className="block text-base font-semibold tracking-[-0.02em] text-white">VibeDesign</span>
+                <span className="mt-0.5 block text-[10px] font-bold uppercase tracking-[0.24em] text-[#7cebcb]">AI Studio</span>
               </span>
-              <span className="text-sm font-semibold text-white">VibeDesign AI</span>
             </Link>
             <div className="flex flex-wrap gap-5 text-sm text-white/48">
               <Link href="/studio" className="hover:text-white">Studio</Link>
@@ -371,11 +373,12 @@ function ProductMockup() {
     <div className="rounded-[2rem] border border-white/[0.22] bg-[#030605] p-2 shadow-[0_34px_110px_rgba(0,0,0,0.68),0_0_0_1px_rgba(0,212,164,0.08)]">
       <div className="grid min-h-[560px] overflow-hidden rounded-[1.55rem] border border-white/10 bg-[#050706] text-left lg:grid-cols-[260px_minmax(0,1fr)_230px]">
         <aside className="hidden border-r border-white/10 bg-[#040605] p-5 lg:block">
-          <div className="mb-10 flex items-center gap-3">
-            <span className="grid h-8 w-8 place-items-center rounded-full bg-[#00d4a4] text-[#06100d]">
-              <Wand2 className="h-3.5 w-3.5" />
-            </span>
-            <span className="text-base font-semibold text-white">vibedesign</span>
+          <div className="mb-10 flex items-center gap-3 rounded-2xl border border-white/8 bg-white/[0.035] p-3">
+            <VibeDesignLogo className="h-9 w-9 shrink-0" />
+            <div>
+              <span className="block text-base font-semibold tracking-[-0.03em] text-white">VibeDesign</span>
+              <span className="mt-0.5 block text-[10px] font-bold uppercase tracking-[0.22em] text-[#7cebcb]">Design OS</span>
+            </div>
           </div>
           {nav.map((item, index) => (
             <div key={item} className={`mt-1 rounded-lg px-3 py-3 text-sm ${index === 1 ? "bg-[#00d4a4]/12 font-semibold text-[#7cebcb]" : "text-white/48"}`}>
