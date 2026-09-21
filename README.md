@@ -112,3 +112,7 @@ lib/
 ## Notes
 
 The app is designed as a browser-only MVP. Uploaded images are processed locally through Canvas API and are not sent to a server. Saved design state is stored in `localStorage`.
+
+## License
+
+Released under the [MIT License](LICENSE).
