@@ -4,6 +4,8 @@ VibeDesign AI is a full-frontend design system generator for vibe coding workflo
 
 It helps users create a consistent website direction before asking an AI coding agent to build the UI. Users can choose a website type, select or mix design vibes, generate and edit a color palette, extract colors from an uploaded image, preview real UI examples, check contrast, and export everything as `DESIGN.md`, CSS variables, Tailwind config, JSON tokens, and an AI agent prompt.
 
+![VibeDesign AI landing page](docs/images/preview.png)
+
 ## Routes
 
 - `/` - dark immersive landing page for VibeDesign AI.
